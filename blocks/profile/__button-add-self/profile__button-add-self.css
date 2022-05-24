@@ -1,0 +1,9 @@
+.profile__button-add-self {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    border: none;
+    width: 146px;
+    height: 46px;
+    cursor: pointer;
+}

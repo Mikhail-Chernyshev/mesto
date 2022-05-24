@@ -1,0 +1,14 @@
+.popup__delivery {
+    margin: 0;
+    padding: 0;
+    margin-top: 48px;
+    Width: 358px;
+    Height: 50px;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.popup__delivery:hover {
+    opacity: 0.8;
+}

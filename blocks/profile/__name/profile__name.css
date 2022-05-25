@@ -9,7 +9,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     grid-column: 3/4;
-    grid-row: 2/3;
+    grid-row: 2/5;
 }
 
 @media screen and (max-width: 767px) {

@@ -19,5 +19,6 @@
         margin: 0;
         width: 18px;
         height: 18px;
+        align-self: flex-end;
     }
 }

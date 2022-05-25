@@ -6,4 +6,13 @@
     height: 21px;
     border: none;
     cursor: pointer;
+    grid-column: 5/6;
+    grid-row: 3/4;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__button-ed-self {
+        width: 18px;
+        height: 18px;
+    }
 }

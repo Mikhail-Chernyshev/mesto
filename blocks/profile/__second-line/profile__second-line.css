@@ -3,4 +3,17 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
+    grid-column: 3/6;
+    grid-row: 5/7;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__second-line {
+        grid-column: 2/6;
+        grid-row: 6/7;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
 }

@@ -3,5 +3,18 @@
     padding-top: 40px;
     margin: 0px 200px 0px 200px;
     color: white;
-    display: flex;
+    display: grid;
+    grid-template-columns: 125px 25px 294px 18px 24px 244px 150px;
+    grid-template-rows: 22px 15px 24px 16px 9px 9px 25px;
+}
+
+@media screen and (max-width: 767px) {
+    .profile {
+        max-width: 320px;
+        margin: 0px 19px;
+        display: grid;
+        grid-template-columns: 46px 32px 125px 32px 10px 18px 19px;
+        grid-template-rows: 100px 25px 22px 26px 14px 14px 36px 50px;
+        /*grid-template-areas: "poh poh avatar poh poh poh poh" "poh poh poh poh poh poh poh" "poh name name name poh buttonedit poh" "poh poh poh poh poh poh poh" "rank rank rank rank rank rank rank" "poh poh poh poh poh poh poh" "buttonadd buttonadd buttonadd buttonadd buttonadd buttonadd";*/
+    }
 }

@@ -14,3 +14,13 @@
 .profile__button-add:hover {
     opacity: 0.6;
 }
+
+@media screen and (max-width: 767px) {
+    .profile__button-add {
+        grid-row: 7/8;
+        grid-column: 2/7;
+        width: 282px;
+        margin: 0;
+        height: 50px;
+    }
+}

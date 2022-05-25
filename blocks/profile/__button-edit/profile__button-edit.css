@@ -4,10 +4,20 @@
     border: 1px solid #FFFFFF;
     width: 21px;
     height: 21px;
-    margin-top: 37px;
-    margin-left: 0px;
+    grid-column: 5/6;
+    grid-row: 3/4;
 }
 
 .profile__button-edit:hover {
     opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__button-edit {
+        grid-column: 6/7;
+        grid-row: 4/5;
+        margin: 0;
+        width: 18px;
+        height: 18px;
+    }
 }

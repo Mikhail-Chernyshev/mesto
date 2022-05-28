@@ -8,6 +8,12 @@
     grid-template-rows: 22px 15px 24px 16px 9px 9px 25px;
 }
 
+@media screen and (max-width: 918px) {
+    .profile {
+        margin: 0px 19px;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .profile {
         max-width: 320px;

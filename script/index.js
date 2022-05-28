@@ -3,7 +3,7 @@ const popup = document.querySelector('.popup')
 const closePopupButton = document.querySelector('.popup__close')
 
 const profileTitle = document.querySelector('.profile__name')
-const profileRank = document.querySelector('.profile__second-line')
+const profileRank = document.querySelector('.profile__rank')
 const popupName = document.querySelector('.popup__input_name')
 const popupRank = document.querySelector('.popup__input_rank')
 const formElement = document.querySelector('.popup__data')

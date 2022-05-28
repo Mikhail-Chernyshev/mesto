@@ -1,4 +1,4 @@
-.profile__second-line {
+.profile__rank {
     margin: 0;
     font-weight: 400;
     font-size: 18px;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .profile__second-line {
+    .profile__rank {
         grid-column: 2/6;
         grid-row: 6/7;
         font-weight: 400;

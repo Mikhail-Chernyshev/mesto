@@ -5,13 +5,16 @@
     line-height: 22px;
     grid-column: 3/6;
     grid-row: 5/7;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 767px) {
     .profile__rank {
         grid-column: 2/6;
         grid-row: 6/7;
-        font-weight: 400;
+
         font-size: 14px;
         line-height: 17px;
         text-align: center;

@@ -1,18 +1,22 @@
 .profile__button-ed-self {
     margin: 0;
     padding: 0;
-    background-color: #000000;
+    background-color: rgba(0,0,0,0);
     width: 21px;
     height: 21px;
     border: none;
     cursor: pointer;
     grid-column: 5/6;
     grid-row: 3/4;
+    border: 1px solid white;
 }
 
 @media screen and (max-width: 767px) {
     .profile__button-ed-self {
         width: 18px;
         height: 18px;
+        grid-column: 6/7;
+        grid-row: 4/5;
+        align-self: flex-end;
     }
 }

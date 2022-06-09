@@ -20,5 +20,6 @@
         max-width: 320px;
         grid-template-columns: 282px;
         margin: 0 19px;
+        padding-top: 36px;
     }
 }

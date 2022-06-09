@@ -17,7 +17,6 @@
 @media screen and (max-width: 767px) {
     .profile {
         max-width: 320px;
-        margin: 0px 19px;
         display: grid;
         grid-template-columns: 46px 32px 125px 32px 10px 18px 19px;
         grid-template-rows: 100px 25px 22px 26px 14px 14px 36px 50px;

@@ -1,7 +1,7 @@
 .profile__button-add-self {
     margin: 0;
     padding: 0;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0);
     border: 2px solid #FFFFFF;
     border-radius: 2px;
     width: 150px;
@@ -16,6 +16,5 @@
         grid-row: 8/9;
         grid-column: 1/7;
         width: 282px;
-        margin: 0;
     }
 }

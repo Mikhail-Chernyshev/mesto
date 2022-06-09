@@ -23,9 +23,9 @@ editButton.addEventListener('click', function() {
 })
 
 closePopupButton.addEventListener('click', function() {
-    closePopup(popup)
-        // profileTitle.textContent = popupName.value;
-        // profileRank.textContent = popupRank.value;
+  closePopup(popup)
+// profileTitle.textContent = popupName.value;
+// profileRank.textContent = popupRank.value;
 })
 
 formElement.addEventListener('submit', function() {

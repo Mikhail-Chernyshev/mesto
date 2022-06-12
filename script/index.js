@@ -4,17 +4,17 @@ const closePopupButton = document.querySelector('.popup__close')
 
 const profileTitle = document.querySelector('.profile__name')
 const profileRank = document.querySelector('.profile__rank')
-const popupName = document.querySelector('.popup__input_name')
-const popupRank = document.querySelector('.popup__input_rank')
+const popupName = document.querySelector('.popup__input_data-name')
+const popupRank = document.querySelector('.popup__input_data-rank')
 const formElement = document.querySelector('.popup__data')
 
 function openPopup(popup) {
-    popup.classList.add('popup__opened')
+    popup.classList.add('popup_opened')
   
 }
 
 function closePopup(popup) {
-    popup.classList.remove('popup__opened')
+    popup.classList.remove('popup_opened')
 }
 
 editButton.addEventListener('click', function() {

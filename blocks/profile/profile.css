@@ -1,7 +1,7 @@
 .profile {
     position: relative;
     padding-top: 40px;
-    margin: 0px 200px 0px 200px;
+    margin: 0;
     color: white;
     display: grid;
     grid-template-columns: 125px 25px 294px 18px 24px 244px 150px;
@@ -10,10 +10,16 @@
 
 @media screen and (max-width: 1279px) {
     .profile {
-        margin: 0px 19px;
+        margin: 0 auto;
+        justify-content: center;
     }
 }
-
+@media screen and (max-width: 1023px) {
+    .profile {
+        margin: 0 auto;   
+        justify-content: left;
+    }
+}
 @media screen and (max-width: 767px) {
     .profile {
         max-width: 320px;

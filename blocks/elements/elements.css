@@ -1,6 +1,6 @@
 .elements {
     padding: 0;
-    margin: 0 200px;
+    margin: 0;
     display: grid;
     grid-template-columns: 282px 282px 282px;
     grid-template-rows: 361px 361px;
@@ -11,15 +11,24 @@
 
 @media screen and (max-width: 1279px) {
     .elements {
-        margin: 0px 19px;
+        margin: 0px auto;
+        justify-content: center;
     }
+}
+@media screen and (max-width: 1023px) {
+    .elements {
+        grid-template-columns: 282px 282px;
+        grid-template-rows: 361px 361px 361px;
+       margin: 0 auto;
+        justify-content: center;
+    }
+    
 }
 
 @media screen and (max-width: 767px) {
     .elements {
-        max-width: 320px;
         grid-template-columns: 282px;
-        margin: 0 19px;
+        margin: 0;
         padding-top: 36px;
     }
 }

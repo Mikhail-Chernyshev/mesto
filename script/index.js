@@ -10,6 +10,7 @@ const formElement = document.querySelector('.popup__data')
 
 function openPopup(popup) {
     popup.classList.add('popup__opened')
+  
 }
 
 function closePopup(popup) {

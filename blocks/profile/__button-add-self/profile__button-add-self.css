@@ -10,11 +10,17 @@
     grid-row: 3/6;
     grid-column: 7/8;
 }
-
+@media  screen and (max-width: 1023px) {
+    .profile__button-add-self {
+    margin-left: 80px;
+    grid-column: 6/7;
+    }
+}
 @media screen and (max-width: 767px) {
     .profile__button-add-self {
         grid-row: 8/9;
         grid-column: 1/7;
         width: 282px;
+        margin: 0;
     }
 }

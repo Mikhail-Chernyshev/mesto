@@ -66,6 +66,11 @@ function render() {
     }
 function renderElement({name, link}) {
         const elementData = elementTemplate.querySelector('.element').cloneNode(true);
+        const buttonLike = elementData.querySelectorAll('.element__like')
+buttonLike.forEach(buttonLike =>
+    buttonLike.addEventListener('click', function() {
+      buttonLike.classList.toggle('element__like_active')
+    }));
         elementData.querySelector('.element__image').src = link;
         elementData.querySelector('.element__title').textContent = name;
         elements.prepend(elementData); 

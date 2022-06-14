@@ -9,7 +9,6 @@ const formElement = document.querySelector('.popup__data')
 //функционал открытия попапа и добавления контента в строки ввода
 function openPopup(popup) {
     popup.classList.add('popup_opened')
-  
 }
 function closePopup(popup) {
     popup.classList.remove('popup_opened')
@@ -70,6 +69,10 @@ function renderElement({name, link}) {
         elementData.querySelector('.element__image').src = link;
         elementData.querySelector('.element__title').textContent = name;
         elements.prepend(elementData); 
+        const deleteButton = elementData.querySelector('.element__trash')
+        deleteButton.addEventListener('click', function() {//РЕАЛИЗОВАЛ УДАЛЕНИЕ КАРТОЧКИ!!!!!
+        elementData.remove()
+})
     }
 render();
 //function deleteElement (elementContent) {
@@ -83,14 +86,15 @@ render();
 const titleElement = document.querySelector('.popup-post__input_data_name')
 const linkElement = document.querySelector('.popup-post__input_data_rank')
 const form = document.querySelector('.popup-post__data')
+const elementData = elementTemplate.querySelector('.element')
 const buttonDelivery = document.querySelector('.popup-post__delivery')
 let elementTitle = elementTemplate.querySelector('.element__title')
-console.log(elementTitle)
+
 const elementSubmit = e => {
     e.preventDefault()
-    elementTitle = titleElement.value
-    const link = linkElement.value
-    renderElement(name, link)
+    name = titleElement.value //вставил текст!!!!
+    link = linkElement.value//Я НЕ ЗНАЮ КАК НО ВСЕ ЗАРАБОТАЛО
+    renderElement({name, link})
     closePopupPost(popupPost)
 }
 buttonDelivery.addEventListener('click', elementSubmit)
@@ -123,8 +127,3 @@ closePopupPostButton.addEventListener('click', function () {
     closePopupPost(popupPost)
 })
 // делаем кнопку удаления элемента
-const deleteButton = document.querySelectorAll('.element__trash')
-function deleteElement(e) {
-    elementTemplate.remove(deleteElement);
-}
-//

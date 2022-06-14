@@ -6,6 +6,7 @@
     width: 22px;
     height: 19px;
     cursor: pointer;
+    background-color: #FFFFFF;
 }
 
 .element__like:active {

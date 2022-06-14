@@ -29,3 +29,9 @@
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__rank/profile__rank.css);
 @import url(../blocks/main/main.css);
+@import url(../blocks/popup-post/popup-post.css);
+@import url(../blocks/popup-post/_opened/popup-post_opened.css);
+@import url(../blocks/element/__like/_active/element__like_active.css);
+@import url(../blocks/element/__trash/element__trash.css);
+@import url(../blocks/element/__trasher-up/element__trasher-up.css);
+@import url(../blocks/element/__trasher-down/element__trasher-down.css);

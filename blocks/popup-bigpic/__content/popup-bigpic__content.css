@@ -1,0 +1,16 @@
+.popup-bigpic__content {
+    display: flex;
+    max-width: 75vh;
+    max-height: 75vh;
+    position: relative;
+    margin: 90px auto;    
+    background: rgba(0, 0, 0, 0.5);
+    
+}
+@media  screen and (max-width: 787px) {
+    .popup-bigpic__content {
+        width: 240px;
+        height: 299px;
+        margin: 135px auto;
+    }   
+}

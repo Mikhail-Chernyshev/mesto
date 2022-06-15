@@ -1,0 +1,15 @@
+.popup-bigpic__close {
+    background-image: url(../../../image/CloseIcon.svg);
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: -40px;
+    right: -155px;
+    cursor: pointer;
+}
+.popup-bigpic__close:hover {
+    opacity: 0.6;
+}

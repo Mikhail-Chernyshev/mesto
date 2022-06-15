@@ -1,0 +1,9 @@
+.popup-bigpic__pic {
+    position: relative;
+    border: 1px solid red;
+}
+@media  screen and (max-width: 787px) {
+    .popup-bigpic__pic {
+        width: 240px;
+    }   
+}

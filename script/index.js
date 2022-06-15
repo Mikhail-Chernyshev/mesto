@@ -20,8 +20,6 @@ editButton.addEventListener('click', function() {
 })
 closePopupButton.addEventListener('click', function() {
   closePopup(popup)
-// profileTitle.textContent = popupName.value;
-// profileRank.textContent = popupRank.value;
 })
 formElement.addEventListener('submit', function() {
     event.preventDefault()
@@ -77,15 +75,10 @@ buttonLike.forEach(buttonLike =>
         const deleteButton = elementData.querySelector('.element__trash')
         deleteButton.addEventListener('click', function() {//РЕАЛИЗОВАЛ УДАЛЕНИЕ КАРТОЧКИ!!!!!
         elementData.remove()
+
 })
     }
 render();
-//function deleteElement (elementContent) {
-//elementContent.querySelector('.element__trash').addEventListener('click', e => {
-  //  const renderElement = e.currentTarget.parentElement
-    //elementTemplate.remove()
-//})
-//}
 //делаем так чтобы элемент добавлялся в разметку
 //пока что я добился того, что новая карточка добавляется на страницу
 const titleElement = document.querySelector('.popup-post__input_data_name')
@@ -104,10 +97,10 @@ const elementSubmit = e => {
 }
 buttonDelivery.addEventListener('click', elementSubmit)
 // делаем лайк активным
-const buttonLike = document.querySelectorAll('.element__like')
-buttonLike.forEach(buttonLike =>
+const buttonsLike = document.querySelectorAll('.element__like')
+buttonsLike.forEach(buttonLike =>
     buttonLike.addEventListener('click', function() {
-      buttonLike.classList.toggle('element__like_active')
+      buttonLike.classList.toggle('.element__like_active')
     }));
 // создаем кнопку добавления нового контента
 const addButton = document.querySelector('.profile__button-add-self')
@@ -115,7 +108,6 @@ const closePopupPostButton = document.querySelector('.popup-post__close')
 const popupPost = document.querySelector('.popup-post')
 const popupPostName = document.querySelector('.popup-post__input_data_name')
 const popupPostRank = document.querySelector('.popup-post__input_data_rank')
-
 addButton.addEventListener('click', function () {
     openPopupPost(popupPost)
     popupPostName.value = null;
@@ -131,4 +123,24 @@ function closePopupPost(popupPost) {
 closePopupPostButton.addEventListener('click', function () {
     closePopupPost(popupPost)
 })
-// делаем кнопку удаления элемента
+// делаем попап картинок
+const popupBigpic = document.querySelector('.popup-bigpic')
+const popupBigpicClose = document.querySelector('.popup-bigpic__close')
+const buttonPopupBigpic = document.querySelectorAll('.element__image')
+//сделал так, чтобы попап закрывался!
+function closePopupBigpic () {
+  popupBigpic.classList.remove('popup_opened')
+}
+popupBigpicClose.addEventListener('click', function() {
+  closePopupBigpic(popupBigpic)
+})
+//теперь надо бы открыть его
+buttonPopupBigpic.forEach(buttonPopupBigpic =>
+  buttonPopupBigpic.addEventListener('click', function(link, title) {
+    popupBigpic.classList.add('popup_opened')
+    const elementDataTwo = elementTemplate.querySelector('.element')
+}))
+//теперь привяжем контент каким-то хуем
+const popupBigpicImage = document.querySelector('.popup-bigpic__pic')
+const linkBigpic = popupBigpicImage.getAttribute('src')
+console.log(linkBigpic)

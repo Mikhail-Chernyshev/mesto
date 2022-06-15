@@ -71,6 +71,7 @@ buttonLike.forEach(buttonLike =>
     }));
         elementData.querySelector('.element__image').src = link;
         elementData.querySelector('.element__title').textContent = name;
+        elementData.querySelector('.element__image').alt = name;//alt = name image
         elements.prepend(elementData); 
         const deleteButton = elementData.querySelector('.element__trash')
         deleteButton.addEventListener('click', function() {//РЕАЛИЗОВАЛ УДАЛЕНИЕ КАРТОЧКИ!!!!!
@@ -127,7 +128,7 @@ closePopupPostButton.addEventListener('click', function () {
 const popupBigpic = document.querySelector('.popup-bigpic')
 const popupBigpicClose = document.querySelector('.popup-bigpic__close')
 const buttonPopupBigpic = document.querySelectorAll('.element__image')
-//сделал так, чтобы попап закрывался!
+//сделаем так, чтобы попап закрывался
 function closePopupBigpic () {
   popupBigpic.classList.remove('popup_opened')
 }
@@ -136,11 +137,12 @@ popupBigpicClose.addEventListener('click', function() {
 })
 //теперь надо бы открыть его
 buttonPopupBigpic.forEach(buttonPopupBigpic =>
-  buttonPopupBigpic.addEventListener('click', function(link, title) {
+  buttonPopupBigpic.addEventListener('click', function() {
     popupBigpic.classList.add('popup_opened')
-    const elementDataTwo = elementTemplate.querySelector('.element')
+ 
 }))
-//теперь привяжем контент каким-то хуем
+//теперь привяжем контент каким-то образом
 const popupBigpicImage = document.querySelector('.popup-bigpic__pic')
+const popupBigpicTitle = document.querySelector('.popup-bigpic__title')
 const linkBigpic = popupBigpicImage.getAttribute('src')
-console.log(linkBigpic)
+const textPopup = popupBigpicImage.alt

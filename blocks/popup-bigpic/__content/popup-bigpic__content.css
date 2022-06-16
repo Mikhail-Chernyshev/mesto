@@ -3,7 +3,7 @@
     position: relative;
     max-width: 75vh;
     max-height: 75vh;
-    margin: 90px 232px;    
+    margin: 90px 232px;
     background: rgba(0, 0, 0, 0.5);
 }
 @media  screen and (max-width: 787px) {

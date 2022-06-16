@@ -1,11 +1,13 @@
 .popup-bigpic__pic {
-    border: 1px solid red;
-    max-width: 100%;
-    height: auto;
+    max-width: auto;
+    height: 100%;
     position: relative;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     display: flex;
+    object-fit: cover;
+    max-width: 816px;
+
 }
 @media  screen and (max-width: 787px) {
     .popup-bigpic__pic {

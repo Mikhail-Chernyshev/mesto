@@ -1,9 +1,9 @@
 .popup-bigpic__image {
-    border: 1px solid red;
     position: relative;
     margin: 0 auto;
     padding: 0;
     display: flex;
-    object-fit: cover;
-    max-width:inherit;
+    max-width: 816px;
+    text-align: center;
+    
 }

@@ -1,11 +1,10 @@
 .popup-bigpic__content {
     display: flex;
+    position: relative;
     max-width: 75vh;
     max-height: 75vh;
-    position: relative;
     margin: 90px auto;    
     background: rgba(0, 0, 0, 0.5);
-    
 }
 @media  screen and (max-width: 787px) {
     .popup-bigpic__content {

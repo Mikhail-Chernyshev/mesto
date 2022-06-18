@@ -54,7 +54,6 @@ const elementSubmit = e => {
     renderElement(card)
     closePopup(popupPost)
 }
-console.log(elementSubmit)
 const buttonsLike = document.querySelectorAll('.element__like')
 const addButton = document.querySelector('.profile__button-add-self')
 const closePopupPostButton = document.querySelector('.popup-post__close')

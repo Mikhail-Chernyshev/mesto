@@ -120,11 +120,15 @@ function createCard(card) {
     deleteButton.addEventListener('click', function() { //РЕАЛИЗОВАЛ УДАЛЕНИЕ КАРТОЧКИ!!!!!
         elementData.remove()
     })
-    elementData.querySelector('.element__image').src = card.link;
-    elementData.querySelector('.element__title').textContent = card.name;
-    elementData.querySelector('.element__image').alt = card.name; //alt = name image
 
-    elements.prepend(elementData);
+    function addElement() {
+        elementData.querySelector('.element__image').src = card.link;
+        elementData.querySelector('.element__title').textContent = card.name;
+        elementData.querySelector('.element__image').alt = card.name;
+
+        elements.prepend(elementData);
+    }
+    addElement()
     return elementData
 }
 //elements.prepend(elementData)

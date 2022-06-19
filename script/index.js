@@ -47,7 +47,6 @@ const elementTitle = elementTemplate.querySelector('.element__title')
 const popupBigpicTitle = document.querySelector('.popup-bigpic__title')
 const popupBigpicImage = document.querySelector('.popup-bigpic__pic')
 const elementSubmit = e => {
-    const card = {}
     e.preventDefault()
     card.name = titleElement.value //вставил текст!!!!
     card.link = linkElement.value //Я НЕ ЗНАЮ КАК НО ВСЕ ЗАРАБОТАЛО
@@ -62,7 +61,8 @@ const popupPostName = document.querySelector('.popup-post__input_data_name')
 const popupPostRank = document.querySelector('.popup-post__input_data_rank')
 const popupBigpic = document.querySelector('.popup-bigpic')
 const popupBigpicClose = document.querySelector('.popup-bigpic__close')
-    //функционал открытия попапа и добавления контента в строки ввода
+
+//функционал открытия попапа и добавления контента в строки ввода
 function openPopup(popup) {
     popup.classList.add('popup_opened')
 }
@@ -85,57 +85,51 @@ formElement.addEventListener('submit', function() {
     closePopup(profilePopup)
 })
 formElementPost.addEventListener('submit', function(e) {
-        const card = {}
         e.preventDefault()
-        card.name = titleElement.value //вставил текст!!!!
-        card.link = linkElement.value //Я НЕ ЗНАЮ КАК НО ВСЕ ЗАРАБОТАЛО
-        renderElement(card)
+        elementData.name = titleElement.value //вставил текст!!!!
+        elementData.link = linkElement.value //Я НЕ ЗНАЮ КАК НО ВСЕ ЗАРАБОТАЛО
+        createCard(elementData)
         closePopup(popupPost)
     })
     // начиная с этого места мы делаем форму добавления объектов на страницу с именами из массива
 function render() {
-    elementContent.forEach(renderElement);
+    elementContent.forEach(createCard);
 }
 
-function renderElement(card) {
+function createCard(card) {
     const elementData = elementTemplate.querySelector('.element').cloneNode(true);
     const buttonLike = elementData.querySelector('.element__like')
     const buttonsPopupBigpic = elementData.querySelector('.element__image')
     const deleteButton = elementData.querySelector('.element__trash')
-
-    buttonLike.addEventListener('click', function() {
-        buttonLike.classList.toggle('element__like_active')
-    });
+    buttonsPopupBigpic.src = card.link;
+    elementTitle.textContent = card.name;
+    buttonsPopupBigpic.alt = card.name;
 
     function openPopupBigpic(event) {
         popupBigpicImage.src = card.link; //у меня стоит передача тайтла в альт картинки, при проблеме с загрузкой появляется именно этот текст
+        popupBigpicImage.alt = card.name
         popupBigpicTitle.textContent = card.name;
         openPopup(popupBigpic)
     }
     buttonsPopupBigpic.addEventListener('click', function() {
         openPopupBigpic(popupBigpic)
     })
-
+    buttonLike.addEventListener('click', function() {
+        buttonLike.classList.toggle('element__like_active')
+    });
     deleteButton.addEventListener('click', function() { //РЕАЛИЗОВАЛ УДАЛЕНИЕ КАРТОЧКИ!!!!!
         elementData.remove()
     })
+    elementData.querySelector('.element__image').src = card.link;
+    elementData.querySelector('.element__title').textContent = card.name;
+    elementData.querySelector('.element__image').alt = card.name; //alt = name image
 
-    function createCard(item) {
-        buttonsPopupBigpic.src = card.link;
-        elementTitle.textContent = card.name;
-        buttonsPopupBigpic.alt = card.name;
-        elements.prepend(elementData)
-        return item
-    }
-    createCard(card)
-        // elementData.querySelector('.element__image').src = card.link;
-        // elementData.querySelector('.element__title').textContent = card.name;
-        //elementData.querySelector('.element__image').alt = card.name;//alt = name image
-        //elements.prepend(elementData);
+    elements.prepend(elementData);
+    return elementData
 }
-
-render();
-// создаем кнопку добавления нового контента
+//elements.prepend(elementData)
+render()
+    // создаем кнопку добавления нового контента
 addButton.addEventListener('click', function() {
         openPopup(popupPost)
         popupPostName.value = null;
@@ -148,6 +142,5 @@ closePopupPostButton.addEventListener('click', function() {
     })
     //сделаем так, чтобы попап закрывался
 popupBigpicClose.addEventListener('click', function() {
-        closePopup(popupBigpic)
-    })
-    //теперь надо бы открыть его
+    closePopup(popupBigpic)
+})

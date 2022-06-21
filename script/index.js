@@ -41,15 +41,15 @@ const elementContent = initialCards.map(function(item) {
 const titleElement = document.querySelector('.popup-post__input_data_name')
 const linkElement = document.querySelector('.popup-post__input_data_rank')
 const form = document.querySelector('.popup-post__data')
-const elementData = elementTemplate.querySelector('.element')
+    //const elementData = elementTemplate.querySelector('.element')
 const buttonDelivery = document.querySelector('.popup-post__delivery')
 const elementTitle = elementTemplate.querySelector('.element__title')
 const popupBigpicTitle = document.querySelector('.popup-bigpic__title')
 const popupBigpicImage = document.querySelector('.popup-bigpic__pic')
 const elementSubmit = e => {
     e.preventDefault()
-    card.name = titleElement.value //вставил текст!!!!
-    card.link = linkElement.value //Я НЕ ЗНАЮ КАК НО ВСЕ ЗАРАБОТАЛО
+    elementData.querySelector('.element__title').textContent = titleElement.value //вставил текст!!!!
+    elementData.querySelector('.element__image').src = linkElement.value //Я НЕ ЗНАЮ КАК НО ВСЕ ЗАРАБОТАЛО
     renderElement(card)
     closePopup(popupPost)
 }
@@ -61,6 +61,10 @@ const popupPostName = document.querySelector('.popup-post__input_data_name')
 const popupPostRank = document.querySelector('.popup-post__input_data_rank')
 const popupBigpic = document.querySelector('.popup-bigpic')
 const popupBigpicClose = document.querySelector('.popup-bigpic__close')
+const elementData = elementTemplate.querySelector('.element')
+const buttonLike = elementData.querySelector('.element__like')
+const buttonsPopupBigpic = elementData.querySelector('.element__image')
+const deleteButton = elementData.querySelector('.element__trash')
 
 //функционал открытия попапа и добавления контента в строки ввода
 function openPopup(popup) {
@@ -88,22 +92,27 @@ formElementPost.addEventListener('submit', function(e) {
         e.preventDefault()
         elementData.name = titleElement.value //вставил текст!!!!
         elementData.link = linkElement.value //Я НЕ ЗНАЮ КАК НО ВСЕ ЗАРАБОТАЛО
-        createCard(elementData)
+        addElement(elementData)
         closePopup(popupPost)
     })
     // начиная с этого места мы делаем форму добавления объектов на страницу с именами из массива
 function render() {
-    elementContent.forEach(createCard);
+    elementContent.forEach(addElement);
 }
 
+//const elementCard = createCard(elementData);
+//console.log(elementCard)
+
 function createCard(card) {
-    const elementData = elementTemplate.querySelector('.element').cloneNode(true);
+    const elementData = elementTemplate.querySelector('.element').cloneNode(true)
     const buttonLike = elementData.querySelector('.element__like')
     const buttonsPopupBigpic = elementData.querySelector('.element__image')
     const deleteButton = elementData.querySelector('.element__trash')
-    buttonsPopupBigpic.src = card.link;
-    elementTitle.textContent = card.name;
-    buttonsPopupBigpic.alt = card.name;
+
+    elementData.querySelector('.element__image').src = card.link;
+    elementData.querySelector('.element__image').alt = card.name;
+    elementData.querySelector('.element__title').textContent = card.name;
+
 
     function openPopupBigpic(event) {
         popupBigpicImage.src = card.link; //у меня стоит передача тайтла в альт картинки, при проблеме с загрузкой появляется именно этот текст
@@ -120,18 +129,13 @@ function createCard(card) {
     deleteButton.addEventListener('click', function() { //РЕАЛИЗОВАЛ УДАЛЕНИЕ КАРТОЧКИ!!!!!
         elementData.remove()
     })
-
-    function addElement() {
-        elementData.querySelector('.element__image').src = card.link;
-        elementData.querySelector('.element__title').textContent = card.name;
-        elementData.querySelector('.element__image').alt = card.name;
-
-        elements.prepend(elementData);
-    }
-    addElement()
     return elementData
 }
-//elements.prepend(elementData)
+
+function addElement(elementData) {
+    const elementCard = createCard(elementData);
+    elements.prepend(elementCard);
+}
 render()
     // создаем кнопку добавления нового контента
 addButton.addEventListener('click', function() {

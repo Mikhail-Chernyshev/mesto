@@ -1,5 +1,8 @@
 //переменные
 const editButton = document.querySelector('.profile__button-ed-self')
+const popupOverlay = document.querySelector('.popup')
+const popupPostOverlay = document.querySelector('.popup-post')
+const popupBigpicOverlay = document.querySelector('.popup-bigpic')
 const profilePopup = document.querySelector('.popup-profile')
 const closePopupButton = document.querySelector('.popup-profile__close')
 const profileTitle = document.querySelector('.profile__name')
@@ -47,13 +50,13 @@ const elementTitle = elementTemplate.querySelector('.element__title')
 const popupBigpicTitle = document.querySelector('.popup-bigpic__title')
 const popupBigpicImage = document.querySelector('.popup-bigpic__pic')
 const elementSubmit = e => {
-    e.preventDefault()
-    elementData.querySelector('.element__title').textContent = titleElement.value //вставил текст!!!!
-    elementData.querySelector('.element__image').src = linkElement.value //Я НЕ ЗНАЮ КАК НО ВСЕ ЗАРАБОТАЛО
-    renderElement(card)
-    closePopup(popupPost)
-}
-const buttonsLike = document.querySelectorAll('.element__like')
+        e.preventDefault()
+        elementData.querySelector('.element__title').textContent = titleElement.value //вставил текст!!!!
+        elementData.querySelector('.element__image').src = linkElement.value //Я НЕ ЗНАЮ КАК НО ВСЕ ЗАРАБОТАЛО
+        renderElement(card)
+        closePopup(popupPost)
+    }
+    //const buttonsLike = document.querySelectorAll('.element__like')
 const addButton = document.querySelector('.profile__button-add-self')
 const closePopupPostButton = document.querySelector('.popup-post__close')
 const popupPost = document.querySelector('.popup-post')
@@ -62,11 +65,10 @@ const popupPostRank = document.querySelector('.popup-post__input_data_rank')
 const popupBigpic = document.querySelector('.popup-bigpic')
 const popupBigpicClose = document.querySelector('.popup-bigpic__close')
 const elementData = elementTemplate.querySelector('.element')
-const buttonLike = elementData.querySelector('.element__like')
-const buttonsPopupBigpic = elementData.querySelector('.element__image')
-const deleteButton = elementData.querySelector('.element__trash')
-
-//функционал открытия попапа и добавления контента в строки ввода
+    //const buttonLike = elementData.querySelector('.element__like')
+    //const buttonsPopupBigpic = elementData.querySelector('.element__image')
+    //const deleteButton = elementData.querySelector('.element__trash')
+    //функционал открытия попапа и добавления контента в строки ввода
 function openPopup(popup) {
     popup.classList.add('popup_opened')
 }
@@ -99,9 +101,6 @@ formElementPost.addEventListener('submit', function(e) {
 function render() {
     elementContent.forEach(addElement);
 }
-
-//const elementCard = createCard(elementData);
-//console.log(elementCard)
 
 function createCard(card) {
     const elementData = elementTemplate.querySelector('.element').cloneNode(true)
@@ -150,5 +149,37 @@ closePopupPostButton.addEventListener('click', function() {
     })
     //сделаем так, чтобы попап закрывался
 popupBigpicClose.addEventListener('click', function() {
-    closePopup(popupBigpic)
+        closePopup(popupBigpic)
+    })
+    //ниже мы настраиваем закрытие попапа по клику ну оверлэй
+document.addEventListener('click', (e) => {
+    if (e.target === popupOverlay) {
+        closePopup(profilePopup)
+    }
 })
+document.addEventListener('click', (e) => {
+    if (e.target === popupPostOverlay) {
+        closePopup(popupPost)
+    }
+})
+document.addEventListener('click', (e) => {
+        if (e.target === popupBigpicOverlay) {
+            closePopup(popupBigpic)
+        }
+    })
+    //escape закрытие попапа
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePopup(profilePopup)
+    }
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePopup(popupPost)
+    }
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePopup(popupBigpic)
+    }
+});

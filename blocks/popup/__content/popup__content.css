@@ -1,5 +1,5 @@
 .popup__content {
-    position:relative;
+    position: relative;
     margin: auto auto;
     padding: 0;
     background-color: #FFFFFF;
@@ -8,8 +8,9 @@
     border-radius: 10px;
     z-index: 11;
 }
-@media  screen and (max-width: 787px) {
+
+@media screen and (max-width: 787px) {
     .popup__content {
         width: 282px;
-    }   
+    }
 }

@@ -23,6 +23,13 @@
         line-height: 17px;
         width: 238px;
         margin: 45px 0 25px 0;
-    
     }
+}
+
+.popup__delivery:disabled {
+    background-color: rgba(255, 255, 255, 0.15);
+    color:#000000;
+    border: 1px solid #000000;
+border-radius: 2px;
+opacity: 0.15;
 }

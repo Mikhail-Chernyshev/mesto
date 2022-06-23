@@ -9,7 +9,14 @@ const profileTitle = document.querySelector('.profile__name')
 const profileRank = document.querySelector('.profile__rank')
 const popupName = document.querySelector('.popup__input_data_name')
 const popupRank = document.querySelector('.popup__input_data_rank')
-const formElement = document.querySelector('.popup__data')
+//forms
+const formElement = document.querySelector('.popup__data_one')
+//const formButton = formElement.querySelector('.popup__delivery')
+//const formInput = formElement.querySelector('.popup__input')
+//const formList = Array.from(document.querySelectorAll('.popup__data'))
+//const formError = formElement.querySelector(`.${formInput.id}-error`);
+//console.log(formError)
+
 const formElementPost = document.querySelector('.popup-post__data')
 const initialCards = [{
         name: 'Архыз',
@@ -77,19 +84,19 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened')
 }
 editButton.addEventListener('click', function() {
-    openPopup(profilePopup)
-    popupName.value = profileTitle.textContent;
-    popupRank.value = profileRank.textContent;
-})
+        openPopup(profilePopup)
+        popupName.value = profileTitle.textContent;
+        popupRank.value = profileRank.textContent;
+    }) 
 closePopupButton.addEventListener('click', function() {
-    closePopup(profilePopup)
-})
+        closePopup(profilePopup)
+    }) 
 formElement.addEventListener('submit', function() {
-    event.preventDefault()
-    profileTitle.textContent = popupName.value;
-    profileRank.textContent = popupRank.value;
-    closePopup(profilePopup)
-})
+        event.preventDefault()
+        profileTitle.textContent = popupName.value;
+        profileRank.textContent = popupRank.value;
+        closePopup(profilePopup)
+    }) 
 formElementPost.addEventListener('submit', function(e) {
         e.preventDefault()
         elementData.name = titleElement.value //вставил текст!!!!
@@ -153,16 +160,16 @@ popupBigpicClose.addEventListener('click', function() {
     })
     //ниже мы настраиваем закрытие попапа по клику ну оверлэй
 document.addEventListener('click', (e) => {
-    if (e.target === popupOverlay) {
-        closePopup(profilePopup)
-    }
-})
-document.addEventListener('click', (e) => {
-    if (e.target === popupPostOverlay) {
-        closePopup(popupPost)
-    }
-})
-document.addEventListener('click', (e) => {
+        if (e.target === popupOverlay) {
+            closePopup(profilePopup)
+        }
+    }) 
+    document.addEventListener('click', (e) => {
+        if (e.target === popupPostOverlay) {
+            closePopup(popupPost)
+        }
+    }) 
+    document.addEventListener('click', (e) => {
         if (e.target === popupBigpicOverlay) {
             closePopup(popupBigpic)
         }

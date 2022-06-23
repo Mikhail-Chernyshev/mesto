@@ -6,13 +6,18 @@
     line-height: 17px;
     margin: 30px auto 0;
     padding: 0;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding-bottom: 13px;
 }
 
-@media  screen and (max-width: 787px) {
+@media screen and (max-width: 787px) {
     .popup__input {
         width: 238px;
     }
-    
 }
+/*.popup__input:invalid {
+    border: 1px solid red;
+}
+.popup__input:valid {
+    border: 1px solid green;
+}*/

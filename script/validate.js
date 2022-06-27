@@ -1,3 +1,4 @@
+const formElement = document.querySelectorAll('.popup__data')
 const showError = (formEl, formInput, errorMessage) => {
     //const formInput = formEl.querySelector('.popup__input')
     const formError = formEl.querySelector(`.${formInput.id}-error`);
@@ -5,23 +6,21 @@ const showError = (formEl, formInput, errorMessage) => {
     formError.textContent = errorMessage;
     formError.classList.add('popup__input-error_active');
   };
-
-  const hideError = (formEl, formInput, errorMessage) => {
+const hideError = (formEl, formInput, errorMessage) => {
    //const formInput = formEl.querySelector('.popup__input')
     const formError = formEl.querySelector(`.${formInput.id}-error`);
     formInput.classList.remove('popup__input_type_error');
     formError.classList.remove('popup__input-error_active')
     formError.textContent = ''
   };
-  
-  const checkInputValidity = (formEl, formInput) => {
+const checkInputValidity = (formEl, formInput) => {
     if (!formInput.validity.valid) {
       showError(formEl, formInput, formInput.validationMessage);
     } else {
       hideError(formEl, formInput);
     }
   };
-  const setEventListeners = (formEl) => {
+const setEventListeners = (formEl) => {
     const inputList = Array.from(formEl.querySelectorAll('.popup__input'));
     const formBut = formEl.querySelector('.popup__delivery')
     toggleButtonState(inputList, formBut)
@@ -31,13 +30,14 @@ const showError = (formEl, formInput, errorMessage) => {
         checkInputValidity(formEl, formInput);
       });
     });
+    
   };
-  function hasInvalidInput (inputList) {
+function hasInvalidInput (inputList) {
     return inputList.some((formInput) => {
     return !formInput.validity.valid;
   });
   }
-  function enableValidation () {
+function enableValidation (element) {
     const formList = Array.from(document.querySelectorAll('.popup__data'))
     formList.forEach((formEl) => {
       formEl.addEventListener('submit', function (evt) {
@@ -46,9 +46,9 @@ const showError = (formEl, formInput, errorMessage) => {
       setEventListeners(formEl)
     })
   }
-  enableValidation()
+enableValidation(formElement)
 //функция деактивации кнопки
-  function toggleButtonState (inputList, formBut) {
+function toggleButtonState (inputList, formBut) {
     if (hasInvalidInput(inputList)) {
       formBut.disabled = true;
         //formButton.classList.add('popup__delivery_inactive')

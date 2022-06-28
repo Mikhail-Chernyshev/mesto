@@ -35,7 +35,7 @@ function openPopup(popup) {
     popup.classList.add('popup_opened')
     document.addEventListener('keydown', closeByEscPress)
 }
-function closeByEscPress(evt, popupElement) {
+function closeByEscPress(evt) {
     if (evt.key === 'Escape') {
         const popupList = Array.from(document.querySelectorAll('.popup'))
         popupList.forEach((popupElement) => {

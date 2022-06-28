@@ -35,12 +35,16 @@ function openPopup(popup) {
     popup.classList.add('popup_opened')
     document.addEventListener('keydown', closeByEscPress)
 }
-function closeByEscPress(evt, popup) {
+function closeByEscPress(evt, popupElement) {
     if (evt.key === 'Escape') {
-        closePopup(popupBigpic)
-        closePopup(popupPost)
-        closePopup(profilePopup)
+        const popupList = Array.from(document.querySelectorAll('.popup'))
+        popupList.forEach((popupElement) => {
+       // closePopup(popupBigpic)
+        //closePopup(popupPost)
+        //closePopup(profilePopup)
+        closePopup(popupElement)
     }
+)}
 }
 function closePopup(popup) {
     popup.classList.remove('popup_opened')

@@ -37,15 +37,11 @@ function openPopup(popup) {
 }
 function closeByEscPress(evt) {
     if (evt.key === 'Escape') {
-        const popupList = Array.from(document.querySelectorAll('.popup'))
-        popupList.forEach((popupElement) => {
-       // closePopup(popupBigpic)
-        //closePopup(popupPost)
-        //closePopup(profilePopup)
-        closePopup(popupElement)
+        const popupOpened = document.querySelector('.popup_opened')
+        closePopup(popupOpened)
     }
-)}
 }
+
 function closePopup(popup) {
     popup.classList.remove('popup_opened')
     document.removeEventListener('keydown', closeByEscPress)

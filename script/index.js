@@ -33,19 +33,18 @@ const elementData = elementTemplate.querySelector('.element')
     //функционал открытия попапа и добавления контента в строки ввода
 function openPopup(popup) {
     popup.classList.add('popup_opened')
-    document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closePopup(popup)
+    document.addEventListener('keydown', closeByEscPress)
+}
+function closeByEscPress(evt, popup) {
+    if (evt.key === 'Escape') {
+        closePopup(popupBigpic)
+        closePopup(popupPost)
+        closePopup(profilePopup)
     }
-});
 }
 function closePopup(popup) {
     popup.classList.remove('popup_opened')
-    document.removeEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closePopup(popup)
-        }
-    });
+    document.removeEventListener('keydown', closeByEscPress)
 }
 editButton.addEventListener('click', function() {
         openPopup(profilePopup)
@@ -63,11 +62,10 @@ formEditProfile.addEventListener('submit', function(e) {
     }) 
 formAddCard.addEventListener('submit', function(e) {
         e.preventDefault()
-        elementData.name = titleElement.value //вставил текст!!!!
-        elementData.link = linkElement.value //Я НЕ ЗНАЮ КАК НО ВСЕ ЗАРАБОТАЛО
-        addElement(elementData)
+        const cardData = {name: titleElement.value , link: linkElement.value }
+        addElement(cardData)
         closePopup(popupPost)
-        buttonDelivery.disabled = true;
+        disableSubmitButton(buttonDelivery)
     })
     // начиная с этого места мы делаем форму добавления объектов на страницу с именами из массива
 function render() {
@@ -83,7 +81,6 @@ function createCard(card) {
     cardImage.alt = card.name;
     elementData.querySelector('.element__title').textContent = card.name;
 
- 
     cardImage.addEventListener('click', function() {
         openPopupBigpic(card)
     })
@@ -105,7 +102,6 @@ function openPopupBigpic(card) {
     popupBigpicTitle.textContent = card.name;
     openPopup(popupBigpic)
 }
-
 render()
     // создаем кнопку добавления нового контента
 addButton.addEventListener('click', function() {

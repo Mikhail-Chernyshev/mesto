@@ -1,16 +1,24 @@
-const formElement = document.querySelectorAll('.popup__data')
+const config = {
+    formSelector: '.popup__data',
+    inputSelector: '.popup__input',
+   submitButtonSelector: '.popup__delivery',
+   inactiveButtonClass: 'popup__delivery_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+}
+const formElement = document.querySelectorAll(config.formSelector)
 const showError = (formEl, formInput, errorMessage) => {
     //const formInput = formEl.querySelector('.popup__input')
     const formError = formEl.querySelector(`.${formInput.id}-error`);
-    formInput.classList.add('popup__input_type_error');
+    formInput.classList.add(config.inputErrorClass);
     formError.textContent = errorMessage;
-    formError.classList.add('popup__input-error_active');
+    formError.classList.add(config.errorClass);
   };
 const hideError = (formEl, formInput, errorMessage) => {
    //const formInput = formEl.querySelector('.popup__input')
     const formError = formEl.querySelector(`.${formInput.id}-error`);
-    formInput.classList.remove('popup__input_type_error');
-    formError.classList.remove('popup__input-error_active')
+    formInput.classList.remove(config.inputErrorClass);
+    formError.classList.remove(config.errorClass)
     formError.textContent = ''
   };
 const checkInputValidity = (formEl, formInput) => {
@@ -21,8 +29,8 @@ const checkInputValidity = (formEl, formInput) => {
     }
   };
 const setEventListeners = (formEl) => {
-    const inputList = Array.from(formEl.querySelectorAll('.popup__input'));
-    const formBut = formEl.querySelector('.popup__delivery')
+    const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
+    const formBut = formEl.querySelector(config.submitButtonSelector)
     toggleButtonState(inputList, formBut)
     inputList.forEach((formInput) => {
       formInput.addEventListener('input', function () {
@@ -30,15 +38,14 @@ const setEventListeners = (formEl) => {
         checkInputValidity(formEl, formInput);
       });
     });
-    
   };
 function hasInvalidInput (inputList) {
     return inputList.some((formInput) => {
     return !formInput.validity.valid;
   });
   }
-function enableValidation (element) {
-    const formList = Array.from(document.querySelectorAll('.popup__data'))
+function enableValidation (config) {
+    const formList = Array.from(document.querySelectorAll(config.formSelector))
     formList.forEach((formEl) => {
       formEl.addEventListener('submit', function (evt) {
         evt.preventDefault()
@@ -46,7 +53,7 @@ function enableValidation (element) {
       setEventListeners(formEl)
     })
   }
-enableValidation(formElement)
+enableValidation(config)
 //функция деактивации кнопки
 function toggleButtonState (inputList, formBut) {
     if (hasInvalidInput(inputList)) {
@@ -57,3 +64,6 @@ function toggleButtonState (inputList, formBut) {
       //formButton.classList.remove('popup__delivery_inactive')
     }
   }
+  function disableSubmitButton(buttonDelivery) {
+    buttonDelivery.disabled = true;
+}

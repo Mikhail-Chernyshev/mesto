@@ -1,11 +1,4 @@
-const config = {
-    formSelector: '.popup__data',
-    inputSelector: '.popup__input',
-   submitButtonSelector: '.popup__delivery',
-   inactiveButtonClass: 'popup__delivery_inactive',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-}
+import config from "./index.js"
 const formElement = document.querySelectorAll(config.formSelector)
 const showError = (formEl, formInput, errorMessage) => {
     //const formInput = formEl.querySelector('.popup__input')
@@ -14,7 +7,7 @@ const showError = (formEl, formInput, errorMessage) => {
     formError.textContent = errorMessage;
     formError.classList.add(config.errorClass);
   };
-const hideError = (formEl, formInput, errorMessage) => {
+const hideError = (formEl, formInput) => {
    //const formInput = formEl.querySelector('.popup__input')
     const formError = formEl.querySelector(`.${formInput.id}-error`);
     formInput.classList.remove(config.inputErrorClass);
@@ -64,6 +57,3 @@ function toggleButtonState (inputList, formBut) {
       //formButton.classList.remove('popup__delivery_inactive')
     }
   }
-  function disableSubmitButton(buttonDelivery) {
-    buttonDelivery.disabled = true;
-}

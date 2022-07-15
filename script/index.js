@@ -1,11 +1,13 @@
 import initialCards from "./initial-cards.js";
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 //переменные
 const config = {
     formSelector: '.popup__data',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__delivery',
     inactiveButtonClass: 'popup__delivery_inactive',
+    popupInputError: '.popup__input-error',
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__input-error_active',
     templateItem: '.element-template',
@@ -20,7 +22,6 @@ const config = {
     cardPopupTitle: '.popup-bigpic__title',
     addCardForm: '.popup-post__data',
 }
-const cardContainer = document.querySelector(config.cardList);
 const elements = document.querySelector('.elements')
 const editButton = document.querySelector('.profile__button-ed-self')
 const popupOverlay = document.querySelector('.popup')
@@ -33,16 +34,14 @@ const profileRank = document.querySelector('.profile__rank')
 const popupName = document.querySelector('.popup__input_data_name')
 const popupRank = document.querySelector('.popup__input_data_rank')
 const formEditProfile = document.querySelector('.popup__data_one')
+const formEditProfileValidator = new FormValidator(config, formEditProfile)
+formEditProfileValidator.enableValidation()
 const formAddCard = document.querySelector('.popup-post__data')
-const elementTemplate = document.querySelector('.element-template').content
-// const elementContent = initialCards.map(function(item) {
-//     return { name: item.name, link: item.link };
-// });
+const formAddCardValidator = new FormValidator(config, formAddCard)
+formAddCardValidator.enableValidation()
 const titleElement = document.querySelector('.popup-post__input_data_name')
 const linkElement = document.querySelector('.popup-post__input_data_rank')
 const buttonDelivery = document.querySelector('.popup-post__delivery')
-const popupBigpicTitle = document.querySelector('.popup-bigpic__title')
-const popupBigpicImage = document.querySelector('.popup-bigpic__pic')
 const addButton = document.querySelector('.profile__button-add-self')
 const closePopupPostButton = document.querySelector('.popup-post__close')
 const popupPost = document.querySelector('.popup-post')
@@ -50,7 +49,6 @@ const popupPostName = document.querySelector('.popup-post__input_data_name')
 const popupPostRank = document.querySelector('.popup-post__input_data_rank')
 const popupBigpic = document.querySelector('.popup-bigpic')
 const popupBigpicClose = document.querySelector('.popup-bigpic__close')
-
 initialCards.forEach((data) => {
     // Создадим экземпляр карточки
     const card = new Card(config, data.name, data.link);
@@ -59,6 +57,24 @@ initialCards.forEach((data) => {
     // Добавляем в DOM
     document.querySelector('.elements').append(cardElement);
   }); 
+  formEditProfile.addEventListener('submit', function(e) {
+    e.preventDefault()
+    profileTitle.textContent = popupName.value;
+    profileRank.textContent = popupRank.value;
+    closePopup(profilePopup)
+}) 
+formAddCard.addEventListener('submit', function(e) {
+    e.preventDefault()
+    const cardData = {name: titleElement.value , link: linkElement.value }
+    addElement(cardData)
+    closePopup(popupPost)
+    disableSubmitButton(buttonDelivery)
+})
+function addElement(data) {
+    const card = new Card(config, data.name, data.link);
+    const cardElement = card.generateCard();
+      elements.prepend(cardElement);
+   }
      //функционал открытия попапа и добавления контента в строки ввода
 function openPopup(popup) {
     popup.classList.add('popup_opened')
@@ -82,23 +98,6 @@ editButton.addEventListener('click', function() {
 closePopupButton.addEventListener('click', function() {
         closePopup(profilePopup)
     }) 
-formEditProfile.addEventListener('submit', function(e) {
-        e.preventDefault()
-        profileTitle.textContent = popupName.value;
-        profileRank.textContent = popupRank.value;
-        closePopup(profilePopup)
-    }) 
-formAddCard.addEventListener('submit', function(e) {
-        e.preventDefault()
-        const cardData = {name: titleElement.value , link: linkElement.value }
-        addElement(cardData)
-        closePopup(popupPost)
-        disableSubmitButton(buttonDelivery)
-    })
- function addElement(data) {
-        const card = new Card(config, data.name, data.link).getElement();
-          elements.prepend(card);
-       }
 //    создаем кнопку добавления нового контента
 addButton.addEventListener('click', function() {
         openPopup(popupPost)
@@ -134,6 +133,13 @@ function disableSubmitButton(buttonDelivery) {
         buttonDelivery.disabled = true;
     }
 export default config
+//const cardContainer = document.querySelector(config.cardList);
+//const elementTemplate = document.querySelector('.element-template').content
+// const elementContent = initialCards.map(function(item) {
+//     return { name: item.name, link: item.link };
+// });
+//const popupBigpicTitle = document.querySelector('.popup-bigpic__title')
+//const popupBigpicImage = document.querySelector('.popup-bigpic__pic')
 // function openPopupBigpic(card) {
 //    popupBigpicImage.src = card.link; //у меня стоит передача тайтла в альт картинки, при проблеме с загрузкой появляется именно этот текст
 //    popupBigpicImage.alt = card.name

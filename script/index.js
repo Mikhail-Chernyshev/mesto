@@ -25,6 +25,7 @@ const config = {
 const elements = document.querySelector('.elements')
 const editButton = document.querySelector('.profile__button-ed-self')
 const popupOverlay = document.querySelector('.popup')
+const elementTemplate = document.querySelector('.element-template')
 const popupPostOverlay = document.querySelector('.popup-post')
 const popupBigpicOverlay = document.querySelector('.popup-bigpic')
 const profilePopup = document.querySelector('.popup-profile')
@@ -51,12 +52,18 @@ const popupBigpic = document.querySelector('.popup-bigpic')
 const popupBigpicClose = document.querySelector('.popup-bigpic__close')
 initialCards.forEach((data) => {
     // Создадим экземпляр карточки
-    const card = new Card(config, data.name, data.link);
+    //const card = new Card(config, data.name, data.link);
+    // Создаём карточку и возвращаем наружу
+    //const cardElement = card.generateCard();
+    // Добавляем в DOM
+    elements.append(createCard(data));
+  }); 
+  function createCard (data) {
+    const card = new Card(config, data.name, data.link, handleCardClick, elementTemplate);
     // Создаём карточку и возвращаем наружу
     const cardElement = card.generateCard();
-    // Добавляем в DOM
-    document.querySelector('.elements').append(cardElement);
-  }); 
+    return cardElement
+    }
   formEditProfile.addEventListener('submit', function(e) {
     e.preventDefault()
     profileTitle.textContent = popupName.value;
@@ -68,12 +75,12 @@ formAddCard.addEventListener('submit', function(e) {
     const cardData = {name: titleElement.value , link: linkElement.value }
     addElement(cardData)
     closePopup(popupPost)
-    disableSubmitButton(buttonDelivery)
+    //disableSubmitButton(buttonDelivery)
 })
 function addElement(data) {
-    const card = new Card(config, data.name, data.link);
-    const cardElement = card.generateCard();
-      elements.prepend(cardElement);
+  //  const card = new Card(config, data.name, data.link);
+    //const cardElement = card.generateCard();
+      elements.prepend(createCard(data));
    }
      //функционал открытия попапа и добавления контента в строки ввода
 function openPopup(popup) {
@@ -129,10 +136,17 @@ document.addEventListener('click', (e) => {
             closePopup(popupBigpic)
         }
     })
-function disableSubmitButton(buttonDelivery) {
-        buttonDelivery.disabled = true;
-    }
-export default config
+function handleCardClick(data) {
+    this._popupBigpicImage.src = this._link; //у меня стоит передача тайтла в альт картинки, при проблеме с загрузкой появляется именно этот текст
+    this._popupBigpicImage.alt = this._name
+    this._popupBigpicTitle.textContent = this._name;
+        openPopup(popupBigpic)
+      }
+    export default config
+// function disableSubmitButton(buttonDelivery) {
+//         buttonDelivery.disabled = true;
+//     }
+
 //const cardContainer = document.querySelector(config.cardList);
 //const elementTemplate = document.querySelector('.element-template').content
 // const elementContent = initialCards.map(function(item) {

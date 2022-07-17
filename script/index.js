@@ -75,7 +75,7 @@ formAddCard.addEventListener('submit', function(e) {
     const cardData = {name: titleElement.value , link: linkElement.value }
     addElement(cardData)
     closePopup(popupPost)
-    //disableSubmitButton(buttonDelivery)
+    disableSubmitButton()
 })
 function addElement(data) {
   //  const card = new Card(config, data.name, data.link);
@@ -143,9 +143,9 @@ function handleCardClick(data) {
         openPopup(popupBigpic)
       }
     export default config
-// function disableSubmitButton(buttonDelivery) {
-//         buttonDelivery.disabled = true;
-//     }
+function disableSubmitButton() {
+        buttonDelivery.disabled = true;
+    }
 
 //const cardContainer = document.querySelector(config.cardList);
 //const elementTemplate = document.querySelector('.element-template').content

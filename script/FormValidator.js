@@ -62,7 +62,6 @@ disableSubmitButton() {
     buttonDelivery.disabled = true;
 }
 enableValidation() {
-   
       this._setEventListeners(this._form)
     }
     

@@ -55,9 +55,7 @@ class Card {
         .addEventListener('click', (evt) =>  {
             this._likeCard(evt)
         })
-        // this._element.querySelector(this._config.cardImageItem).addEventListener('click', () => {
-        //         this._handleOpenPopup();
-        //       });
+
         this._cardImage.addEventListener('click', () => {
                 this._handleCardClick(this._element)
               });

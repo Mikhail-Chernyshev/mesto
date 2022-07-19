@@ -1,6 +1,10 @@
 import initialCards from "./initial-cards.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import Section from "./Section.js";
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+import UserInfo from "./UserInfo.js";
 //переменные
 const config = {
     formSelector: '.popup__data',
@@ -23,12 +27,9 @@ const config = {
     addCardForm: '.popup-post__data',
 }
 const elements = document.querySelector('.elements')
+const elementListSelector = ('.elements')
 const editButton = document.querySelector('.profile__button-ed-self')
-const popupOverlay = document.querySelector('.popup')
 const elementTemplate = document.querySelector('.element-template')
-const popupPostOverlay = document.querySelector('.popup-post')
-const popupBigpicOverlay = document.querySelector('.popup-bigpic')
-const profilePopup = document.querySelector('.popup-profile')
 const closePopupButton = document.querySelector('.popup-profile__close')
 const profileTitle = document.querySelector('.profile__name')
 const profileRank = document.querySelector('.profile__rank')
@@ -44,149 +45,69 @@ const titleElement = document.querySelector('.popup-post__input_data_name')
 const linkElement = document.querySelector('.popup-post__input_data_rank')
 const buttonDelivery = document.querySelector('.popup-post__delivery')
 const addButton = document.querySelector('.profile__button-add-self')
-const closePopupPostButton = document.querySelector('.popup-post__close')
-const popupPost = document.querySelector('.popup-post')
+const profilePopup = new PopupWithForm( { popupSelector: document.querySelector('.popup-profile'), submitCallBack: () => {
+    profileTitle.textContent = popupName.value;
+     profileRank.textContent = popupRank.value;
+    //  const dataaa = {
+    //  username: popupName.value,
+    //  info: popupRank.value,
+    //  }
+    // user.setUserInfo(dataaa)
+    profilePopup.close()
+} }, closePopupButton)
+profilePopup.setEventListeners()
+const popupPost = new PopupWithForm( {popupSelector: document.querySelector('.popup-post'), submitCallBack: () => {
+    // evt.preventDefault()
+    const cardData = {name: titleElement.value , link: linkElement.value }
+    addElement(cardData)
+    popupPost.close()
+    disableSubmitButton()
+} })
+popupPost.setEventListeners()
 const popupPostName = document.querySelector('.popup-post__input_data_name')
 const popupPostRank = document.querySelector('.popup-post__input_data_rank')
 const popupBigpic = document.querySelector('.popup-bigpic')
-const popupBigpicClose = document.querySelector('.popup-bigpic__close')
-initialCards.forEach((data) => {
-    // Создадим экземпляр карточки
-    //const card = new Card(config, data.name, data.link);
-    // Создаём карточку и возвращаем наружу
-    //const cardElement = card.generateCard();
-    // Добавляем в DOM
-    elements.append(createCard(data));
-  }); 
   function createCard (data) {
     const card = new Card(config, data.name, data.link, handleCardClick, elementTemplate);
     // Создаём карточку и возвращаем наружу
     const cardElement = card.generateCard();
     return cardElement
     }
-  formEditProfile.addEventListener('submit', function(e) {
-    e.preventDefault()
-    profileTitle.textContent = popupName.value;
-    profileRank.textContent = popupRank.value;
-    closePopup(profilePopup)
-}) 
-formAddCard.addEventListener('submit', function(e) {
-    e.preventDefault()
-    const cardData = {name: titleElement.value , link: linkElement.value }
-    addElement(cardData)
-    closePopup(popupPost)
-    disableSubmitButton()
-})
 function addElement(data) {
-  //  const card = new Card(config, data.name, data.link);
-    //const cardElement = card.generateCard();
       elements.prepend(createCard(data));
    }
      //функционал открытия попапа и добавления контента в строки ввода
-function openPopup(popup) {
-    popup.classList.add('popup_opened')
-    document.addEventListener('keydown', closeByEscPress)
-}
-function closeByEscPress(evt) {
-    if (evt.key === 'Escape') {
-        const popupOpened = document.querySelector('.popup_opened')
-        closePopup(popupOpened)
-    }
-}
-function closePopup(popup) {
-    popup.classList.remove('popup_opened')
-    document.removeEventListener('keydown', closeByEscPress)
-}
+     const user = new UserInfo(profileTitle, profileRank );
+//user.setUserInfo()
 editButton.addEventListener('click', function() {
-        openPopup(profilePopup)
-        popupName.value = profileTitle.textContent;
-        popupRank.value = profileRank.textContent;
-    }) 
-closePopupButton.addEventListener('click', function() {
-        closePopup(profilePopup)
+        // popupName.value = profileTitle.textContent;
+        const data = user.getUserInfo();
+        popupName.value = data.username;
+        popupRank.value = data.info;
+        // popupRank.value = profileRank.textContent;
+        profilePopup.open()
     }) 
 //    создаем кнопку добавления нового контента
 addButton.addEventListener('click', function() {
-        openPopup(popupPost)
-        popupPostName.value = null;
-        popupPostRank.value = null;
+        popupPost.open()
+        popupPostName.value = '';
+        popupPostRank.value = '';
     })
-    //функция выше открывает попап с пустыми полями даже после ввода данных
-    // делаем попап картинок
-closePopupPostButton.addEventListener('click', function() {
-        closePopup(popupPost)
-    })
-    //сделаем так, чтобы попап закрывался
-popupBigpicClose.addEventListener('click', function() {
-        closePopup(popupBigpic)
-    })
-    //ниже мы настраиваем закрытие попапа по клику ну оверлэй
-document.addEventListener('click', (e) => {
-        if (e.target === popupOverlay) {
-            closePopup(profilePopup)
-        }
-    }) 
-document.addEventListener('click', (e) => {
-        if (e.target === popupPostOverlay) {
-            closePopup(popupPost)
-        }
-    }) 
-document.addEventListener('click', (e) => {
-        if (e.target === popupBigpicOverlay) {
-            closePopup(popupBigpic)
-        }
-    })
-function handleCardClick(data) {
-    this._popupBigpicImage.src = this._link; //у меня стоит передача тайтла в альт картинки, при проблеме с загрузкой появляется именно этот текст
-    this._popupBigpicImage.alt = this._name
-    this._popupBigpicTitle.textContent = this._name;
-        openPopup(popupBigpic)
+function handleCardClick(name, link) {
+    this._popupBigpicImage.src = link //у меня стоит передача тайтла в альт картинки, при проблеме с загрузкой появляется именно этот текст
+    this._popupBigpicImage.alt = name
+    this._popupBigpicTitle.textContent = name;
+        popupBigpicNew.open(this)
       }
     export default config
 function disableSubmitButton() {
         buttonDelivery.disabled = true;
     }
+const elementList = new Section({ data: initialCards, renderer: (item) => {
+        elementList.addItem(createCard(item));
+       
+   } }, elementListSelector);
+   elementList.renderElements();
 
-//const cardContainer = document.querySelector(config.cardList);
-//const elementTemplate = document.querySelector('.element-template').content
-// const elementContent = initialCards.map(function(item) {
-//     return { name: item.name, link: item.link };
-// });
-//const popupBigpicTitle = document.querySelector('.popup-bigpic__title')
-//const popupBigpicImage = document.querySelector('.popup-bigpic__pic')
-// function openPopupBigpic(card) {
-//    popupBigpicImage.src = card.link; //у меня стоит передача тайтла в альт картинки, при проблеме с загрузкой появляется именно этот текст
-//    popupBigpicImage.alt = card.name
-//    popupBigpicTitle.textContent = card.name;
-//     openPopup(popupBigpic)
-// }
-// render()
-// function createCard(card) {
-//    const elementData = elementTemplate.querySelector('.element').cloneNode(true)
-//    const buttonLike = elementData.querySelector('.element__like')
-//    const cardImage = elementData.querySelector('.element__image')
-//    const deleteButton = elementData.querySelector('.element__trash')
-
-//     cardImage.src = card.link;
-//     cardImage.alt = card.name;
-//     elementData.querySelector('.element__title').textContent = card.name;
-
-//     cardImage.addEventListener('click', function() {
-//        openPopupBigpic(card)
-//     })
-//     buttonLike.addEventListener('click', function() {
-//        buttonLike.classList.toggle('element__like_active')
-//     });
-//     deleteButton.addEventListener('click', function() { 
-//        elementData.remove()
-//    })
-//     return elementData
-// }
-    // начиная с этого места мы делаем форму добавления объектов на страницу с именами из массива
-// function render() {
-//    elementContent.forEach(addElement);
-// }
-// function addElement(elementData) {
-//  const elementCard = createCard(elementData);
-//    elements.prepend(elementCard);
-// }
+const popupBigpicNew = new PopupWithImage(popupBigpic)
+popupBigpicNew.setEventListeners()

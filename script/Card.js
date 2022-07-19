@@ -5,7 +5,6 @@ class Card {
          this._name = name;
          this._link = link;
          this._template = elementTemplate;
-        //  this._likeButton = config.cardButtonLike;
          this._popupBigpicImage = document.querySelector('.popup-bigpic__pic')
          this._popupBigpicTitle = document.querySelector('.popup-bigpic__title')
          this._popupBigpic = document.querySelector('.popup-bigpic')  
@@ -19,7 +18,6 @@ class Card {
         return cardElement
     }
      generateCard() {
-         
          this._element = this._getTemplate();
          this._likeButton = this._element.querySelector(this._config.cardButtonLike)
          this._cardImage = this._element.querySelector('.element__image')
@@ -55,10 +53,9 @@ class Card {
         .addEventListener('click', (evt) =>  {
             this._likeCard(evt)
         })
-
-        this._cardImage.addEventListener('click', () => {
-                this._handleCardClick(this._element)
-              });
+        this._cardImage.addEventListener('click', () => { 
+            this._handleCardClick(this._name, this._link)
+        });
     }
  }
 export default Card;

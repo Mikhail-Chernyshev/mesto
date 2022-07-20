@@ -45,18 +45,17 @@ const titleElement = document.querySelector('.popup-post__input_data_name')
 const linkElement = document.querySelector('.popup-post__input_data_rank')
 const buttonDelivery = document.querySelector('.popup-post__delivery')
 const addButton = document.querySelector('.profile__button-add-self')
-const profilePopup = new PopupWithForm( { popupSelector: document.querySelector('.popup-profile'), submitCallBack: () => {
-    profileTitle.textContent = popupName.value;
-     profileRank.textContent = popupRank.value;
-    //  const dataaa = {
-    //  username: popupName.value,
-    //  info: popupRank.value,
-    //  }
-    // user.setUserInfo(dataaa)
+const profilePopup = new PopupWithForm( { popupSelector: document.querySelector('.popup-profile'), submitCallBack: (formData) => {
+     const data = {
+        username: profileTitle.textContent = popupName.value,
+        info: profileRank.textContent = popupRank.value,
+        }
+      user.setUserInfo(data)
     profilePopup.close()
 } }, closePopupButton)
 profilePopup.setEventListeners()
-const popupPost = new PopupWithForm( {popupSelector: document.querySelector('.popup-post'), submitCallBack: () => {
+
+const popupPost = new PopupWithForm( {popupSelector: document.querySelector('.popup-post'), submitCallBack: (user) => {
     // evt.preventDefault()
     const cardData = {name: titleElement.value , link: linkElement.value }
     addElement(cardData)
@@ -78,7 +77,7 @@ function addElement(data) {
    }
      //функционал открытия попапа и добавления контента в строки ввода
      const user = new UserInfo(profileTitle, profileRank );
-//user.setUserInfo()
+      
 editButton.addEventListener('click', function() {
         // popupName.value = profileTitle.textContent;
         const data = user.getUserInfo();

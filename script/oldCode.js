@@ -167,3 +167,7 @@
 //     })
 // const popupBigpicOverlay = document.querySelector('.popup-bigpic')
 // const popupBigpicClose = document.querySelector('.popup-bigpic__close')
+  //profilePopup.getInputValues()
+   // user.setUserInfo(formData)
+    // profileTitle.textContent = popupName.value;
+    // profileRank.textContent = popupRank.value;

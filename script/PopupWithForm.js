@@ -5,13 +5,22 @@ export default class PopupWithForm extends Popup {
         this._submitCallBack = submitCallBack;
         this._formSubmit = this._formSubmit.bind(this);
         this._form = this._popupSelector.querySelector('.popup__data');
-
+        this._inputs = Array.from(this._form.querySelectorAll('.popup__input'));
+       // this._submitButton = this._form.querySelector('.popup__delivery');
     }
 
-      _formSubmit(evt) {
+    _formSubmit(evt) {
         evt.preventDefault();
-        this._submitCallBack();
+        this._submitCallBack(this._getInputValues());
       }
+      _getInputValues() {
+        const data = {};
+        this._inputs.forEach((input) => {
+          data[input.name] = input.value;
+        });
+        return data;
+      }
+
  
     close() {
         super.close();
@@ -24,3 +33,4 @@ export default class PopupWithForm extends Popup {
 
     }
 }
+  

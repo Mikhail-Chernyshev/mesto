@@ -12,7 +12,7 @@ export default class UserInfo {
 
     }
     setUserInfo(data) {
-        // this._userName.textContent = '1';
-        // this._userInfo = data.rank;
+        this._userName = data.username;
+        this._userInfo = data.info;
     }
 }

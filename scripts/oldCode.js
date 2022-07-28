@@ -171,3 +171,22 @@
    // user.setUserInfo(formData)
     // profileTitle.textContent = popupName.value;
     // profileRank.textContent = popupRank.value;
+    // function addElement(data) {
+//      // elementContainer.prepend(createCard(data));
+//      elementList.addItem(createCard(data))
+//    }
+     //функционал открытия попапа и добавления контента в строки ввода
+      // function disableSubmitButton() {
+//         buttonDelivery.disabled = true;
+//     }
+        // popupBigpicTitle.textContent = name;
+        // popupBigpicImage.src = link;
+        // popupBigpicImage.alt = name;
+                    // popupName.value = profileTitle.textContent;
+              // popupRank.value = profileRank.textContent;
+//               const popupBigpic = document.querySelector('.popup-bigpic')
+// const popupBigpicTitle = document.querySelector('.popup-bigpic__title')
+// const popupBigpicImage = document.querySelector('.popup-bigpic__pic')
+// const titleElement = document.querySelector('.popup-post__input_data_name')
+// const linkElement = document.querySelector('.popup-post__input_data_rank')
+// const buttonDelivery = document.querySelector('.popup-post__delivery')

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+    <link rel="stylesheet" href="./pages/index.css"> -->
     <title>Mesto</title>
 </head>
 
@@ -15,24 +15,24 @@
         </header>
         <main class="main">
             <section class="profile">
-                <img src="/image/image.jpg" alt="аватар" class="profile__avatar">
+                <img src="/images/image.jpg" alt="аватар" class="profile__avatar">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <p class="profile__rank">Исследователь океана</p>
 
                 <button type="button" name="edit" class="profile__button-ed-self">
-                        <img src="/image/Vector.svg" alt="кнопка" class="profile__button-ed-pic">
+                        <img src="/images/Vector.svg" alt="кнопка" class="profile__button-ed-pic">
                     </button>
 
                 <button type="button" name="add" class="profile__button-add-self">
-                        <img src="/image/Vectorrrbutton.svg" alt="кнопка" class="profile__button-add-pic">
+                        <img src="/images/Vectorrrbutton.svg" alt="кнопка" class="profile__button-add-pic">
                     </button>
             </section>
             <section class="elements">
                 <template id="element-template" class="element-template">
                 <div class="element">
                     <button class="element__trash" type="button">
-                        <img src="/image/Vectortrashup.png" alt="" class="element__trasher-up">
-                        <img src="/image/Vectortrashdown.png" alt="" class="element__trasher-down">
+                        <img src="/images/Vectortrashup.png" alt="" class="element__trasher-up">
+                        <img src="/images/Vectortrashdown.png" alt="" class="element__trasher-down">
                     </button>
                     <img alt="" class="element__image">
                     <div class="element__atribute">
@@ -65,10 +65,10 @@
             <div class="popup__content popup-post__content ">
                 <button class="popup-post__close popup__close " type="button "></button>
                 <h2 class="popup-post__title popup__title ">Новое место</h2>
-                <form action="# " novalidate class="popup__data popup-post__data " name="formpopup ">
-                    <input type="text " id="post-name-input" minlength="2 " maxlength="30 " name="name " class="popup__input popup-post__input popup-post__input_data_name " required="required " placeholder="Название ">
+                <form action="#" novalidate class="popup__data popup-post__data " name="formpopup ">
+                    <input type="text " id="post-name-input" minlength="2 " maxlength="30 " name="name" class="popup__input popup-post__input popup-post__input_data_name " required="required " placeholder="Название ">
                     <span class="popup__input-error post-name-input-error"></span>
-                    <input type="url" id="post-url-input" name="rank" class="popup-post__input popup__input popup-post__input_data_rank " required="required " placeholder="Ссылка на картинку ">
+                    <input type="url" id="post-url-input" name="link" class="popup-post__input popup__input popup-post__input_data_rank " required="required " placeholder="Ссылка на картинку ">
                     <span class="popup__input-error post-url-input-error"></span>
                     <button type="submit " class="popup-post__delivery popup__delivery " disabled>Создать</button>
                 </form>
@@ -87,7 +87,7 @@
             <p class="footer__copyright ">© 2020 Mesto Russia</p>
         </footer>
     </div>
-    <!-- <script type="module" src="./index.js "></script> -->
+     <script type="module" src="./pages/index.js "></script> -->
 </body>
 
 </html>

@@ -4,6 +4,7 @@ constructor (config, formElement) {
     this._config = config;
     this._form = formElement;
    // this._formInput = config.inputSelector;
+   this._formButton = this._form.querySelector(this._config.submitButtonSelector)
     this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
 }
 _checkInputValidity(formInput) {
@@ -27,16 +28,16 @@ _hideInputError(formInput) {
     formError.classList.remove(this._config.errorClass)
     formError.textContent = ''
 }
-_enableSubmitButton (formEl) {
-    const formBut = this._form.querySelector(this._config.submitButtonSelector)
-    formBut.disabled = true;
-}3
-_toggleButtonState(inputList, formBut) {
+// _enableSubmitButton (formEl) {
+//     const formBut = this._form.querySelector(this._config.submitButtonSelector)
+//     formBut.disabled = true;
+// }3
+_toggleButtonState(inputList) {
     if (this._hasInvalidInput(this._inputList)) {
-        formBut.disabled = true;
+        this._formButton.disabled = true;
           //formButton.classList.add('popup__delivery_inactive')
       } else {
-          formBut.disabled = false;
+        this._formButton.disabled = false;
         //formButton.classList.remove('popup__delivery_inactive')
       }
 }
@@ -47,22 +48,22 @@ _hasInvalidInput(inputList) {
     
 }
 _setEventListeners(formEl) {
-    const inputList = Array.from(this._form.querySelectorAll('.popup__input'));
-    const formBut = this._form.querySelector(this._config.submitButtonSelector)
+   // const inputList = Array.from(this._form.querySelectorAll('.popup__input'));
+    //const formBut = this._form.querySelector(this._config.submitButtonSelector)
     //toggleButtonState(inputList, formBut)
-    inputList.forEach((formInput) => {
+    this._inputList.forEach((formInput) => {
       formInput.addEventListener('input', () => {
-        this._toggleButtonState(inputList, formBut)
+        this._toggleButtonState(this._inputList)
         this._checkInputValidity(formInput);
       });
 
     });
 }
 disableSubmitButton() {
-    buttonDelivery.disabled = true;
+  this._formButton.disabled = true;
 }
 enableValidation() {
-      this._setEventListeners(this._form)
+      this._setEventListeners(this._config.formSelector)
     }
     
 }

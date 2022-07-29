@@ -1,11 +1,11 @@
-//import './pages/index.css';
-import Card from "../scripts/components/Card.js";
-import FormValidator from "../scripts/components/FormValidator.js";
-import Section from "../scripts/components/Section.js";
-import PopupWithForm from "../scripts/components/PopupWithForm.js";
-import PopupWithImage from "../scripts/components/PopupWithImage.js";
-import UserInfo from "../scripts/components/UserInfo.js";
-import { initialCards, config, elementListSelector, buttonEdit, elementTemplate, buttonClosePopup, popupName, popupRank, formEditProfile, formAddCard, buttonAddElement, popupPostName, popupPostRank } from '../scripts/utils/variable.js'
+import './pages/index.css';
+import Card from "./scripts/components/Card.js";
+import FormValidator from "./scripts/components/FormValidator.js";
+import Section from "./scripts/components/Section.js";
+import PopupWithForm from "./scripts/components/PopupWithForm.js";
+import PopupWithImage from "./scripts/components/PopupWithImage.js";
+import UserInfo from "./scripts/components/UserInfo.js";
+import { initialCards, config, elementListSelector, buttonEdit, elementTemplate, buttonClosePopup, popupName, popupRank, formEditProfile, formAddCard, buttonAddElement, popupPostName, popupPostRank } from './scripts/utils/variable.js'
 
 const formEditProfileValidator = new FormValidator(config, formEditProfile)
 formEditProfileValidator.enableValidation()

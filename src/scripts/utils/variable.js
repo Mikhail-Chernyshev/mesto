@@ -54,3 +54,4 @@ const initialCards = [{
   const buttonAddElement = document.querySelector('.profile__button-add-self')
   const popupPostName = document.querySelector('.popup-post__input_data_name')
 const popupPostRank = document.querySelector('.popup-post__input_data_rank')
+export {initialCards, config, elementListSelector, buttonEdit,elementTemplate, buttonClosePopup, popupName, popupRank, formEditProfile, formAddCard,buttonAddElement, popupPostName, popupPostRank};

@@ -1,4 +1,4 @@
-import {profileTitle, profileRank} from '../../pages/index.js'
+// import {profileTitle, profileRank} from '../../pages/index.js'
 export default class UserInfo {
     constructor( { userName, userInfo } ) {
         this._userName = document.querySelector(userName);
@@ -12,7 +12,6 @@ export default class UserInfo {
           return userInfo
     }
     setUserInfo(data) {
-        console.log(data)
         this._userName.textContent = data.name;
         this._userInfo.textContent = data.rank;
     }

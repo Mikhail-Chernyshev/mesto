@@ -190,3 +190,6 @@
 // const titleElement = document.querySelector('.popup-post__input_data_name')
 // const linkElement = document.querySelector('.popup-post__input_data_rank')
 // const buttonDelivery = document.querySelector('.popup-post__delivery')
+// const profileTitle = document.querySelector('.profile__name')
+// const profileRank = document.querySelector('.profile__rank')
+// const elementContainer = document.querySelector('.elements')

@@ -3,13 +3,13 @@
     position: relative;
     max-width: 75vh;
     max-height: 75vh;
-    margin: 90px 232px;
+    margin: 90px auto;
     background: rgba(0, 0, 0, 0.5);
 }
 @media  screen and (max-width: 1023px) {
     .popup-bigpic__content {
-        max-width: 500px;
-        margin: 90px 10px;
+        /* max-width: 500px; */
+        /* margin: 90px 10px; */
     }   
 }
 
@@ -17,6 +17,6 @@
     .popup-bigpic__content {
         width: 240px;
         height: 299px;
-        margin: 135px auto;
+        /* margin: 135px auto; */
     }   
 }

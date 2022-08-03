@@ -1,4 +1,7 @@
 .popup__container {
-    margin: 0;
+    margin: 13px 0px;
     padding: 0;
+    height: 56px;
+    display: flex;
+    flex-direction: column;
 }

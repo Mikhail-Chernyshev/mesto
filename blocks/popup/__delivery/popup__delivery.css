@@ -11,6 +11,9 @@
     font-size: 18px;
     line-height: 22px;
     border-radius: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 36px;
 }
 
 .popup__delivery:hover {

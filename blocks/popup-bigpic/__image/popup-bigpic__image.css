@@ -3,7 +3,6 @@
     margin: 0 auto;
     padding: 0;
     display: flex;
-    max-width: 816px;
-    text-align: center;
-    
+    /* max-width: 816px; */
+    text-align: center;  
 }

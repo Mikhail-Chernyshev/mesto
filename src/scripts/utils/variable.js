@@ -1,6 +1,6 @@
 const initialCards = [{
-    name: 'Hurts',
-    link: 'https://avatars.yandex.net/get-music-content/63210/5d49936a.a.2990574-1/m1000x1000?webp=false'
+    name: 'Horizont image',
+    link: 'https://img1.akspic.ru/attachments/crops/2/3/2/7/47232/47232-pole-gorizont-selskij_rajon-ravnina-energiya-1920x1080.jpg'
   },
   {
     name: 'One Republic',

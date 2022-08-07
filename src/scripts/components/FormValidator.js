@@ -32,7 +32,7 @@ _hideInputError(formInput) {
 //     const formBut = this._form.querySelector(this._config.submitButtonSelector)
 //     formBut.disabled = true;
 // }3
-_toggleButtonState(inputList) {
+_toggleButtonState() {
     if (this._hasInvalidInput(this._inputList)) {
         this._formButton.disabled = true;
           //formButton.classList.add('popup__delivery_inactive')
@@ -41,19 +41,19 @@ _toggleButtonState(inputList) {
         //formButton.classList.remove('popup__delivery_inactive')
       }
 }
-_hasInvalidInput(inputList) {
+_hasInvalidInput() {
     return this._inputList.some((formInput) => {
         return !formInput.validity.valid;
       });
     
 }
-_setEventListeners(formEl) {
+_setEventListeners() {
    // const inputList = Array.from(this._form.querySelectorAll('.popup__input'));
     //const formBut = this._form.querySelector(this._config.submitButtonSelector)
     //toggleButtonState(inputList, formBut)
     this._inputList.forEach((formInput) => {
       formInput.addEventListener('input', () => {
-        this._toggleButtonState(this._inputList)
+        this._toggleButtonState()
         this._checkInputValidity(formInput);
       });
 
@@ -63,7 +63,7 @@ disableSubmitButton() {
   this._formButton.disabled = true;
 }
 enableValidation() {
-      this._setEventListeners(this._config.formSelector)
+      this._setEventListeners()
     }
     
 }

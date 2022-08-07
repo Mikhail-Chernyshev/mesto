@@ -23,7 +23,7 @@ const elementList = new Section({ data: initialCards, renderer: (item) => {
  const profilePopup = new PopupWithForm( { popupSelector: '.popup-profile', submitCallBack: (data) => {
   user.setUserInfo(data)
 profilePopup.close()
-} }, buttonClosePopup)
+} })
 profilePopup.setEventListeners()
 
 const popupPost = new PopupWithForm( {popupSelector: '.popup-post', submitCallBack: (data) => {
@@ -44,9 +44,8 @@ buttonEdit.addEventListener('click', function() {
     }) 
 
 buttonAddElement.addEventListener('click', function() {
+        formAddCardValidator.disableSubmitButton()
         popupPost.open()
-        popupPostName.value = '';
-        popupPostRank.value = '';
     })
 
 function handleCardClick(name, link) {
@@ -54,7 +53,7 @@ function handleCardClick(name, link) {
       }
 
 function createCard (data) {
-      const card = new Card(config, data.name, data.link, handleCardClick, elementTemplate);
+      const card = new Card(config, data.name, data.link, handleCardClick, '.element-template');
       const cardElement = card.generateCard();
       return cardElement
       }

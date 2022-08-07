@@ -3,7 +3,7 @@ class Card {
          this._config = config;
          this._name = name;
          this._link = link;
-         this._template = selectorTemplate;
+         this._template = document.querySelector(selectorTemplate);
          this._handleCardClick = handleCardClick;
      }
     //  _getTemplate() {

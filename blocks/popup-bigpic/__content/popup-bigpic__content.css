@@ -1,18 +1,11 @@
 .popup-bigpic__content {
-    display: flex;
+    /* display: flex; */
     position: relative;
     padding: 0;
-    /* max-width: 75vw;
-    max-height: 75vh; */
-    margin: 0 auto;
-    align-self: center;
+    margin: auto auto;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    z-index: 12;
- 
-    flex-direction: column;
-    box-sizing: border-box;
-    /* padding: 40px 40px 0 0; */
+    /* z-index: 12; */
 }
 @media  screen and (max-width: 1023px) {
     .popup-bigpic__content {

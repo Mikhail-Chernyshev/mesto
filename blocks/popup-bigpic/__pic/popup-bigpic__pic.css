@@ -1,16 +1,14 @@
 .popup-bigpic__pic {
-    /* height: 100%; */
-    position: relative;
-    margin: 0;
+    /* position: relative; */
+    /* margin: 0;
     padding: 0;
     display: flex;
-    object-fit: cover;
+    object-fit: initial; */
+    /* box-sizing: border-box; */
     max-width: 75vw;
     max-height: 75vh;
 }
 @media  screen and (max-width: 787px) {
     .popup-bigpic__pic {
-        /* max-width: 240px;
-        max-height: 299px; */
     }   
 }

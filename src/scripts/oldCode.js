@@ -211,3 +211,6 @@
     //  this._formSubmit.addEventListener('click', () => {
         // deleteCard(this._cardId)
       //  });
+          // getElement() {
+    //     return this._element;
+    // }

@@ -29,7 +29,7 @@ class Card {//создаем класс кард
          this._likeButton = this._element.querySelector(this._config.cardButtonLike)//кнопка лайка
          this._cardImage = this._element.querySelector('.element__image')//само изображние в карточке
          this._setEventListeners();//включаем слушатели
-         //this._scoreLike = this._likes.length;//хуй знает
+         //this._scoreLike = this._likes.length;//хуй 
          this._cardImage.src = this._link;//ccылка на картинку
          this._cardImage.alt = this._link;//описание картинки
          this._isCardLiked();//метод проверки на наличие лайка

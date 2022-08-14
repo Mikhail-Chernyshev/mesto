@@ -150,6 +150,7 @@ function createCard (data) {//функция создания новой кар�
           //  console.log(data)
             api.removeLikeCard(data)//убираем лайк методом
             .then((data) => {//результат
+              console.log(data)
               card.likeCard(data)// убираем лайк
             })
             .catch((err) => {//ловим ошибку

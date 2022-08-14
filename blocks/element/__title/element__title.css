@@ -1,6 +1,7 @@
 .element__title {
     margin: 0;
     padding: 0;
+    padding-top: 3px;
     width: 190px;
     text-overflow: ellipsis;
     white-space: nowrap;

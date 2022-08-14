@@ -1,28 +1,4 @@
-const initialCards = [{
-    name: 'Horizont image',
-    link: 'https://img1.akspic.ru/attachments/crops/2/3/2/7/47232/47232-pole-gorizont-selskij_rajon-ravnina-energiya-1920x1080.jpg'
-  },
-  {
-    name: 'One Republic',
-    link: 'https://avatars.yandex.net/get-music-content/2357076/42fadbb9.a.10774796-3/m1000x1000?webp=false'
-  },
-  {
-    name: 'Nirvana',
-    link: 'https://i.pinimg.com/originals/ce/0b/fe/ce0bfe254a75d878f90481fe9337f773.jpg'
-  },
-  {
-    name: 'Paul McCartney',
-    link: 'https://kartinkin.net/uploads/posts/2021-01/1611849636_1-p-foni-dlya-oblozhek-albomov-1.jpg'
-  },
-  {
-    name: 'Scorpion',
-    link: 'https://lastfm.freetls.fastly.net/i/u/ar0/5ffb845d9d55dcb5f84e22601708d24a.jpg'
-  },
-  {
-    name: 'Pink Floyd',
-    link: 'https://cdn.fishki.net/upload/post/201402/28/1247616/d3f727438bc98aedc0053543bb16e823.jpg'
-  }
-  ];
+
   const config = {
       formSelector: '.popup__data',
       inputSelector: '.popup__input',
@@ -42,6 +18,8 @@ const initialCards = [{
       cardPopupImage: '.popup-bigpic__pic',
       cardPopupTitle: '.popup-bigpic__title',
       addCardForm: '.popup-post__data',
+      deleteCardPopup: '.popup-delete__content',
+      likeScore: '.element__score'
   }
   const elementListSelector = ('.elements')
   const buttonEdit = document.querySelector('.profile__button-ed-self')
@@ -51,7 +29,12 @@ const initialCards = [{
   const popupRank = document.querySelector('.popup__input_data_rank')
   const formEditProfile = document.querySelector('.popup__data_one')
   const formAddCard = document.querySelector('.popup-post__data')
+  const formDeleteCard = document.querySelector('.popup-delete__delivery')
+  const formEditAvatar = document.querySelector('.popup-avatar__data')
   const buttonAddElement = document.querySelector('.profile__button-add-self')
   const popupPostName = document.querySelector('.popup-post__input_data_name')
 const popupPostRank = document.querySelector('.popup-post__input_data_rank')
-export {initialCards, config, elementListSelector, buttonEdit,elementTemplate, buttonClosePopup, popupName, popupRank, formEditProfile, formAddCard,buttonAddElement, popupPostName, popupPostRank};
+const popupDeleteSelector = document.querySelector('.popup-delete')
+const profileAvatar = document.querySelector('.profile__avatar')
+const editAvatarButton = document.querySelector('.profile__button-edit')
+export { config, elementListSelector, buttonEdit,elementTemplate, buttonClosePopup, popupName, popupRank, formEditProfile, formAddCard,buttonAddElement, popupPostName, popupPostRank, popupDeleteSelector, formDeleteCard, profileAvatar, editAvatarButton, formEditAvatar};

@@ -193,3 +193,21 @@
 // const profileTitle = document.querySelector('.profile__name')
 // const profileRank = document.querySelector('.profile__rank')
 // const elementContainer = document.querySelector('.elements')
+// const profilePopup = new PopupWithForm( { popupSelector: '.popup-profile', submitCallBack: (data) => { //создаем попап редактирования данных профиля
+//   user.setUserInfo(data)  //устанавливаем новые данные в страницу профиля
+//   profilePopup.close() //закрываем попап после сабмита
+//   } })
+// const popupPost = new PopupWithForm( {popupSelector: '.popup-post', submitCallBack: (data) => {//создаем попап доблавления карточки и передаем через сабмит дату формы
+// elementList.addItem(createCard(data)) //после сабмита добавляем новую карточку в список карточек
+// popupPost.close() //закрываем попап
+// formAddCardValidator.disableSubmitButton(); //выключаем кнопку отправки
+// } })
+// function handleCardClick(name, link) {
+//         popupBigpicNew.open(name,link)
+//       }
+// function handleDeleteIconClick() {
+// popupDelete.open()
+// }
+    //  this._formSubmit.addEventListener('click', () => {
+        // deleteCard(this._cardId)
+      //  });

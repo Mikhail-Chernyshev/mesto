@@ -15,8 +15,9 @@
         </header>
         <main class="main">
             <section class="profile">
-                <img src="<%=require('/images/image.jpg')%>" alt="аватар" class="profile__avatar">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <img src="#" alt="аватар" class="profile__avatar">
+                <button class="profile__button-edit"></button>
+                <h1 class="profile__name">Жак-Кусто</h1>
                 <p class="profile__rank">Исследователь океана</p>
 
                 <button type="button" name="edit" class="profile__button-ed-self">
@@ -30,14 +31,16 @@
                 <template id="element-template" class="element-template">
                 <div class="element">
                     <button class="element__trash" type="button">
-                        
                         <img src="<%=require('/images/Vectortrashup.png')%>" alt="" class="element__trasher-up">
                         <img src="<%=require('/images/Vectortrashdown.png')%>" alt="" class="element__trasher-down">
                     </button>
                     <img alt="" class="element__image">
                     <div class="element__atribute">
                         <h3 class="element__title"></h3>
+                        <div class="element__like-container">
                         <button type="button" class="element__like"></button>
+                        <p class="element__score">0</p>
+                        </div>
                     </div>
                 </div>
             </template>
@@ -85,6 +88,25 @@
                     <p class="popup-bigpic__title"></p>
                     <button class="popup-bigpic__close popup__close" type="button"></button>
                 <!-- </div> -->
+            </div>
+        </div>
+        <div class="popup popup-delete">
+            <div class="popup__content popup-delete__content">
+                <button class="popup__close popup-delete__close" type="button"></button>
+                <h2 class="popup__title popup-delete__title">Вы уверены?</h2>
+                <button type="button" class="popup__delivery popup-delete__delivery">Да</button>
+            </div>
+        </div>
+        <div class="popup popup-avatar">
+            <div class="popup__content popup-avatar__content">
+                <button class="popup__close popup-avatar__close" type="button"></button>
+                <h2 class="popup__title popup-avatar__title">Обновить аватар</h2>
+                <form action="#" novalidate class="popup__data popup-avatar__data " name="formpopup ">
+                    <div class="popup__container popup-avatar__container">
+                    <input type="url" id="avatar-name-input" minlength="2 " maxlength="200" name="link" class="popup__input popup-avatar__input popup-avatar__input_data_name" required="required" placeholder="Введите ссылку">
+                    <span class="popup__input-error avatar-name-input-error"></span>
+                    </div>
+                <button type="submit" class="popup__delivery popup-avatar__delivery">Сохранить</button>
             </div>
         </div>
         <footer class="footer ">

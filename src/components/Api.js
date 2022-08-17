@@ -2,7 +2,7 @@ class Api {
   constructor({ host, token }) {
     this._host = host;
     this._token = token;
-    //this._getJsonOnError = this._getJsonOnError.bind(this)
+
   }
   _getJsonOnError(res) {
     if (res.ok) {

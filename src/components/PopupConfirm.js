@@ -1,4 +1,3 @@
-import Card from "./Card.js";
 import Popup from "./Popup.js";
 export default class PopupConfirm extends Popup {
   constructor({ popupSelector }) {
@@ -10,7 +9,7 @@ export default class PopupConfirm extends Popup {
   }
   setEventListeners() {
     super.setEventListeners();
-    this._formSubmit.addEventListener('click', (evt) => {
+    this._formSubmit.addEventListener("click", (evt) => {
       evt.preventDefault();
       this._getDelete();
     });

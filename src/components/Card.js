@@ -44,6 +44,7 @@ class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this.stayCountEmpty();
+    this._isCardLiked();
     this._checkDeleteButton();
     this._element.querySelector(".element__title").textContent = this._name;
     return this._element;
@@ -82,6 +83,11 @@ class Card {
   _checkDeleteButton() {
     if (this._myId !== this._userId) {
       this._deleteButton.remove();
+    }
+  }
+  _isCardLiked() {
+    if (this._likes.some((user) => user._id === this._myId)) {
+      this._likeButton.classList.add(this._config.cardButtonLikeActive);
     }
   }
 }

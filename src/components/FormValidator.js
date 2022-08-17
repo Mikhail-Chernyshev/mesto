@@ -1,9 +1,8 @@
-//const formEl = document.querySelector('.popup__data')
 class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._form = formElement;
-    // this._formInput = config.inputSelector;
+
     this._formButton = this._form.querySelector(
       this._config.submitButtonSelector
     );
@@ -33,11 +32,9 @@ class FormValidator {
   }
   _toggleButtonState() {
     if (this._hasInvalidInput(this._inputList)) {
-      this.disableSubmitButton()
-      //formButton.classList.add('popup__delivery_inactive')
+      this.disableSubmitButton();
     } else {
       this._formButton.disabled = false;
-      //formButton.classList.remove('popup__delivery_inactive')
     }
   }
   _hasInvalidInput() {

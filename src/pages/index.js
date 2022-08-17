@@ -27,27 +27,23 @@ import {
 import Api from "../components/Api.js";
 import PopupConfirm from "../components/PopupConfirm";
 //попап увеличенной картинки
-const popupBigpicNew = new PopupWithImage(".popup-bigpic"); //создаём попап с картинкой
-popupBigpicNew.setEventListeners(); //активируем слушатели
+const popupBigpicNew = new PopupWithImage(".popup-bigpic");
+popupBigpicNew.setEventListeners();
 //попап удаления
-const popupDelete = new PopupConfirm({ popupSelector: ".popup-delete" }); //создаём попап удаления
-popupDelete.setEventListeners(); //включаем его слушатели
+const popupDelete = new PopupConfirm({ popupSelector: ".popup-delete" });
+popupDelete.setEventListeners();
 //попап изменения аватара
 const popupAvatar = new PopupWithForm({
-  //создаём попап изменения аватара
-  popupSelector: ".popup-avatar", //селектор попапа
+  popupSelector: ".popup-avatar",
   submitCallBack: (data) => {
-    //обработчик сабмита, принимающий данные из ГетИнпутВалюес
-    popupAvatar.setLoading(true); //изменяем состояние кнопки на Загрузку
+    popupAvatar.setLoading(true);
     api
-      .editAvatar(data) //отправляем на Апи данные нового аватара
+      .editAvatar(data)
       .then((res) => {
-        //получаем объект пользователя
-        user.setUserInfo(res); //устанавливаем новые данные в юзера через метод сетюзенинфо и данные (рез)
-        popupAvatar.close(); //закрываем попап аватара
+        user.setUserInfo(res);
+        popupAvatar.close();
       })
       .catch((err) => {
-        //ловим ошибку
         console.log(`Error: ${err}`);
       })
       .finally(() => {
@@ -55,24 +51,20 @@ const popupAvatar = new PopupWithForm({
       });
   },
 });
-popupAvatar.setEventListeners(); //включаем его слушатели
+popupAvatar.setEventListeners();
 //попап данных профиля
 const profilePopup = new PopupWithForm({
-  //создаем попап редактирования данных профиля
-  popupSelector: ".popup-profile", //селектор попапа
+  popupSelector: ".popup-profile",
   submitCallBack: (data) => {
-    //обработчик сабмита, принимающий данные ДАТА из ГетИнпутВалюес
-    profilePopup.setLoading(true); //изменяем состояние кнопки на Загрузку
+    profilePopup.setLoading(true);
     api
-      .editUserInfo(data) //отправляем на Апи новые данные
+      .editUserInfo(data)
       .then((res) => {
-        //получаем объект пользователя
         user.setUserInfo(res);
-        profilePopup.setLoading(false); //устанавливаем через метод СетЮзерИнфо
-        profilePopup.close(); //закрываем попап
+        profilePopup.setLoading(false);
+        profilePopup.close();
       })
       .catch((err) => {
-        //ловим ошибку
         console.log(`Error: ${err}`);
       })
       .finally(() => {
@@ -80,23 +72,19 @@ const profilePopup = new PopupWithForm({
       });
   },
 });
-profilePopup.setEventListeners(); //активируем  слушатели попапа
+profilePopup.setEventListeners();
 //попап добавления новой карточки
 const popupPost = new PopupWithForm({
-  //создаэём попап добавления новой карточки
-  popupSelector: ".popup-post", //селектор попапа
+  popupSelector: ".popup-post",
   submitCallBack: (data) => {
-    //передаем через сабмит дату формы из ГетИнпутВалюус
-    popupPost.setLoading(true); //статус загрузки кнопки
+    popupPost.setLoading(true);
     api
-      .addCard(data) //отправляем на сервер методом аддкард данные
+      .addCard(data)
       .then((res) => {
-        //получаем объект карточки
-        elementList.addItem(createCard(res)); //добавляем новую карточку в список карточек
-        popupPost.close(); //закрываем попап
+        elementList.addItem(createCard(res));
+        popupPost.close();
       })
       .catch((err) => {
-        //ловим ошибку
         console.log("ошибочка вышла");
       })
       .finally(() => {
@@ -104,93 +92,76 @@ const popupPost = new PopupWithForm({
       });
   },
 });
-popupPost.setEventListeners(); //активируем слушатели попапа
+popupPost.setEventListeners();
 //выгрузка всех карточек
 const elementList = new Section(
   {
-    //создаем список карточек
     renderer: (item) => {
-      //через метод рендерер класса Секшн передаем массив объектов items
-      elementList.addItem(createCard(item)); //каждую новую карточку добавляем в этот список
+      elementList.addItem(createCard(item));
     },
   },
   elementListSelector
-); //селектор списка элементов
+);
 //валидация формы редактирования
-const formEditProfileValidator = new FormValidator(config, formEditProfile); // создаем валидацию редактирования профиля
-formEditProfileValidator.enableValidation(); //запускаем валидацию в нём
+const formEditProfileValidator = new FormValidator(config, formEditProfile);
+formEditProfileValidator.enableValidation();
 //валидация формы добавления
-const formAddCardValidator = new FormValidator(config, formAddCard); //создаём валидацию добавления новой карточки
-formAddCardValidator.enableValidation(); //также запускаем валидацию, за которую отвечает метод энэйблВалидэйшн
+const formAddCardValidator = new FormValidator(config, formAddCard);
+formAddCardValidator.enableValidation();
 //валидация формы аватара
-const formEditAvatarValidator = new FormValidator(config, formEditAvatar); //создаём валидацию добавления нового аватара
-formEditAvatarValidator.enableValidation(); //запускаем валидацию
+const formEditAvatarValidator = new FormValidator(config, formEditAvatar);
+formEditAvatarValidator.enableValidation();
 //экземпляр пользователя
 const user = new UserInfo({
-  //создаём экземпляр профиля
-  userName: ".profile__name", //юзернейм
-  userInfo: ".profile__rank", //юзеринфо
+  userName: ".profile__name",
+  userInfo: ".profile__rank",
   avatar: ".profile__avatar",
-}); //аватар селектор
-let userId; //вводим переменную юзерНейм
+});
+let userId;
 //заводим Апи
 const api = new Api({
-  //создаём Апи
-  host: "https://mesto.nomoreparties.co/v1/cohort-47/", //подключаем хост
-  token: "dfd0d591-2c36-49ee-a6dc-331afeedf1bc", //токен
+  host: "https://mesto.nomoreparties.co/v1/cohort-47/",
+  token: "dfd0d591-2c36-49ee-a6dc-331afeedf1bc",
 });
 
-Promise.all([
-  //в Promise.all передаем массив промисов которые нужно выполнить
-  api.getUserInfo(),
-  api.getCards(),
-])
+Promise.all([api.getUserInfo(), api.getCards()])
   .then(([userData, items]) => {
-    //попадаем сюда когда оба промиса будут выполнены
-    user.setUserInfo(userData); //устанавливаем в поля данные из Апи методом сетЮзерИнфо
-    //userName = userData.name;
+    user.setUserInfo(userData);
+
     userId = userData._id;
-    elementList.setCards(items); //получаем карточки методом сетКардс, который сейчас создадим в сектион
+    elementList.setCards(items);
     elementList.renderElements();
-    // у нас есть все нужные данные, отрисовываем страницу
   })
   .catch((err) => {
-    //попадаем сюда если один из промисов завершаться ошибкой
     console.log(err);
   });
 //обработчики кнопок
 buttonEdit.addEventListener("click", function () {
-  //при нажамитии на кнопку "редактировать"
-  const data = user.getUserInfo(); //заводим дату, которая получает в себя данные методом гетЮзерИнфо
-  popupProfileName.value = data.username; //устанавливаем в строку имени имя пользователя
-  popupProfileRank.value = data.info; //а в инфо о себе графу о себе
-  profilePopup.open(); //открываем попап для редактирования
+  const data = user.getUserInfo();
+  popupProfileName.value = data.username;
+  popupProfileRank.value = data.info;
+  profilePopup.open();
 });
 buttonAddElement.addEventListener("click", function () {
-  //при нажатии на кнопку "добавить"
-  formAddCardValidator.disableSubmitButton(); //делаем неактивной кнопку отправить
-  popupPost.open(); //открываем попап новой карточки
+  formAddCardValidator.disableSubmitButton();
+  popupPost.open();
 });
 editAvatarButton.addEventListener("click", () => {
-  //при нажатии на кнопку редактировать аватар
-  formEditAvatarValidator.disableSubmitButton()
-  popupAvatar.open(); //открываем соттветствующий аватар
+  formEditAvatarValidator.disableSubmitButton();
+  popupAvatar.open();
 });
+//создаем новую карточку
 function createCard(data) {
-  //функция создания новой карточки
   const card = new Card({
-    //создаём экземпляр карточки
     config,
     data,
-    userId, //передаем необходимые данные
+    userId,
     handleCardClick: (name, link) => {
-      //потом функцию-колбэк, принимающую в себя имя и адрес картинки
-      popupBigpicNew.open(name, link); //открываем  увеличенный картинка
+      popupBigpicNew.open(name, link);
     },
-    selectorTemplate: ".element-template", //селектор карточки
+    selectorTemplate: ".element-template",
     handleDeleteIconClick: (cardId) => {
-      //колбэк кнопки удалить на карточке
-      popupDelete.open(); //открываем попап удаления
+      popupDelete.open();
       popupDelete.submitCallback(() => {
         api
           .deleteCard(cardId)
@@ -199,39 +170,32 @@ function createCard(data) {
             card.deleteCard();
           })
           .catch((err) => {
-            //ловим ошибку
             console.log(`Error: ${err}`);
-          }); //попап закрывается
+          });
       });
     },
     handleSetLike: (data) => {
-      //обработчик нажатия лайка которому мы передаем кардАйди
       api
-        .setLikeCard(data) //вызываем метод сетлайккард у Апи
+        .setLikeCard(data)
         .then((data) => {
-          //получаем результат объект
-          card.likeCard(data); //непосредственно ставим лайк методом лайккард класса кард
+          card.likeCard(data);
         })
         .catch((err) => {
-          //ловим ошибку
           console.log(`Ошибка: ${err}`);
         });
     },
     handleRemoveLike: (data) => {
-      //обработчик нажатия лайка и отмены лайка
       api
-        .removeLikeCard(data) //убираем лайк методом
+        .removeLikeCard(data)
         .then((data) => {
-          //результат
           card.likeCard(data);
-          card.stayCountEmpty(); // убираем лайк
+          card.stayCountEmpty();
         })
         .catch((err) => {
-          //ловим ошибку
           console.log(`Ошибка: ${err}`);
         });
     },
   });
-  const cardElement = card.generateCard(); //создаем элемент карточки методом генерэйтКард
-  return cardElement; //возвращаем его
-} //карточка создана!
+  const cardElement = card.generateCard();
+  return cardElement;
+}

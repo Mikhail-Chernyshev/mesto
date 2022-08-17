@@ -7,7 +7,7 @@
     grid-column: 1/2;
     background-repeat: no-repeat;
     background-position: center;
-    grid-row: 1/8;  
+    grid-row: 1/8;
     opacity: 0;
     transition: .8s ease;
 }

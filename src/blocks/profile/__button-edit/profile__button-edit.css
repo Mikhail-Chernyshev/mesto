@@ -1,0 +1,26 @@
+.profile__button-edit {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 125px;
+    height: 125px;
+    grid-column: 1/2;
+    background-repeat: no-repeat;
+    background-position: center;
+    grid-row: 1/8;  
+    opacity: 0;
+    transition: .8s ease;
+}
+
+.profile__button-edit:hover {
+    background-image: url(../../../../images/VectorEditAvatar.svg);
+    opacity: 1;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__button-edit {
+        grid-column: 3/4;
+        grid-row: 1/8;
+        
+    }
+}

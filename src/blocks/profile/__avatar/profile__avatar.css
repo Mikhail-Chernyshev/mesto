@@ -1,0 +1,22 @@
+.profile__avatar {
+     border-radius: 50%;
+     margin: 0;
+     grid-column: 1/2;
+     grid-row: 1/8;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+}
+        
+@media screen and (max-width: 767px) {
+    .profile__avatar {
+        grid-column: 3/4;
+        grid-row: 1/3;
+    }
+}
+
+.profile__avatar:hover{
+    cursor: pointer;
+    outline-style: none;
+    opacity: 0;
+}

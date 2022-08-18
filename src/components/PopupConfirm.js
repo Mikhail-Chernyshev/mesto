@@ -4,14 +4,14 @@ export default class PopupConfirm extends Popup {
     super(popupSelector);
     this._formSubmit = this._popup.querySelector(".popup__delivery");
   }
-  submitCallback(removing) {
-    this._getDelete = removing;
+  clickRemove(removing) {
+    this._getClick = removing;
   }
   setEventListeners() {
     super.setEventListeners();
     this._formSubmit.addEventListener("click", (evt) => {
       evt.preventDefault();
-      this._getDelete();
+      this._getClick();
     });
   }
 }

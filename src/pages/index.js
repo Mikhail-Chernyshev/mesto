@@ -27,8 +27,8 @@ import {
 import Api from "../components/Api.js";
 import PopupConfirm from "../components/PopupConfirm";
 //попап увеличенной картинки
-const popupBigpicNew = new PopupWithImage(".popup-bigpic");
-popupBigpicNew.setEventListeners();
+const popupBigpic = new PopupWithImage(".popup-bigpic");
+popupBigpic.setEventListeners();
 //попап удаления
 const popupDelete = new PopupConfirm({ popupSelector: ".popup-delete" });
 popupDelete.setEventListeners();
@@ -129,7 +129,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
     user.setUserInfo(userData);
 
     userId = userData._id;
-    elementList.setCards(items);
+    elementList.setItems(items);
     elementList.renderElements();
   })
   .catch((err) => {
@@ -157,12 +157,12 @@ function createCard(data) {
     data,
     userId,
     handleCardClick: (name, link) => {
-      popupBigpicNew.open(name, link);
+      popupBigpic.open(name, link);
     },
     selectorTemplate: ".element-template",
     handleDeleteIconClick: (cardId) => {
       popupDelete.open();
-      popupDelete.submitCallback(() => {
+      popupDelete.clickRemove(() => {
         api
           .deleteCard(cardId)
           .then(() => {

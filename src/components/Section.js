@@ -11,7 +11,7 @@ export default class Section {
   addItem(element) {
     this._container.append(element);
   }
-  setCards(items) {
+  setItems(items) {
     this._items = items;
   }
 }

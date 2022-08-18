@@ -24,7 +24,7 @@ class Api {
     return fetch(`${this._host}/cards`, {
       method: "POST",
       headers: {
-        authorization: "dfd0d591-2c36-49ee-a6dc-331afeedf1bc",
+        authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -49,7 +49,7 @@ class Api {
     return fetch(`${this._host}/users/me`, {
       method: "PATCH",
       headers: {
-        authorization: "dfd0d591-2c36-49ee-a6dc-331afeedf1bc",
+        authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -62,7 +62,7 @@ class Api {
     return fetch(`${this._host}/users/me/avatar`, {
       method: "PATCH",
       headers: {
-        authorization: "dfd0d591-2c36-49ee-a6dc-331afeedf1bc",
+        authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -74,7 +74,7 @@ class Api {
     return fetch(`${this._host}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: {
-        authorization: "dfd0d591-2c36-49ee-a6dc-331afeedf1bc",
+        authorization: this._token,
         "Content-Type": "application/json",
       },
     }).then((res) => this._getJsonOnError(res));
@@ -83,7 +83,7 @@ class Api {
     return fetch(`${this._host}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: {
-        authorization: "dfd0d591-2c36-49ee-a6dc-331afeedf1bc",
+        authorization: this._token,
         "Content-Type": "application/json",
       },
     }).then((res) => this._getJsonOnError(res));

@@ -61,7 +61,6 @@ const profilePopup = new PopupWithForm({
       .editUserInfo(data)
       .then((res) => {
         user.setUserInfo(res);
-        profilePopup.setLoading(false);
         profilePopup.close();
       })
       .catch((err) => {

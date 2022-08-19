@@ -161,12 +161,12 @@ function createCard(data) {
     selectorTemplate: ".element-template",
     handleDeleteIconClick: (cardId) => {
       popupDelete.open();
-      popupDelete.clickRemove(() => {
+      popupDelete.setConfirmHandler(() => {
         api
           .deleteCard(cardId)
           .then(() => {
             popupDelete.close();
-            card.deleteCard();
+           card.deleteCard();
           })
           .catch((err) => {
             console.log(`Error: ${err}`);

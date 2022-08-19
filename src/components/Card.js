@@ -19,8 +19,7 @@ class Card {
     this._template = document.querySelector(selectorTemplate);
     this._handleCardClick = handleCardClick;
     this._cardId = data._id;
-    this._myId = userId;
-    this._userId = data.owner._id;
+    this._ownerId = data.owner._id;
     this._handleSetLike = handleSetLike;
     this._handleDeleteIconClick = handleDeleteIconClick;
     this._handleRemoveLike = handleRemoveLike;
@@ -81,7 +80,7 @@ class Card {
     });
   }
   _checkDeleteButton() {
-    if (this._myId !== this._userId) {
+    if (this._userId !== this._ownerId) {
       this._deleteButton.remove();
     }
   }

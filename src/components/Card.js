@@ -85,7 +85,7 @@ class Card {
     }
   }
   _isCardLiked() {
-    if (this._likes.some((user) => user._id === this._myId)) {
+    if (this._likes.some((user) => user._id === this._userId)) {
       this._likeButton.classList.add(this._config.cardButtonLikeActive);
     }
   }
